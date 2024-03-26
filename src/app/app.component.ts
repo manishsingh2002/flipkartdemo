@@ -9,6 +9,7 @@ import { DataService } from './data.service';
 export class AppComponent implements OnInit {
   title = 'flipkartdemo';
   data: any;
+  filter: any[] = [];
 
   constructor(private dataService: DataService) {}
 
@@ -16,5 +17,9 @@ export class AppComponent implements OnInit {
     this.dataService.getData().subscribe((response) => {
       this.data = response;
     });
+  }
+  onFilteredData(data: any) {
+    // console.log(data);
+    this.filter = data;
   }
 }

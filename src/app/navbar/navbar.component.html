@@ -16,7 +16,6 @@
         {{ brand }}
       </option>
     </select>
-    <!-- // -->
     <!-- price -->
     <div class="price">
       <select name="price" [(ngModel)]="selectedPrice">
@@ -25,7 +24,7 @@
           {{ prices }}
         </option>
       </select>
-      <!--  -->
+
       <div class="rating">
         <select name="rating" [(ngModel)]="selectedRating">
           <option value="">Select rating</option>
@@ -36,9 +35,8 @@
         <!--  -->
         {{ selectedCategory }}{{ selectedBrand }}{{ selectedPrice
         }}{{ selectedRating }}
+        <!--  -->
       </div>
     </div>
   </div>
 </div>
-
-<app-homepage></app-homepage>

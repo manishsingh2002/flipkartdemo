@@ -1,21 +1,32 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnChanges,
+} from '@angular/core';
 import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'], // Fix: Changed styleUrl to styleUrls
+  styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnChanges {
   public data: any;
   public category: any[] = [];
   public brand: any[] = [];
   public price: any[] = [];
   public rating: any[] = [];
+
   selectedCategory: any[] = [];
   selectedRating: any[] = [];
   selectedBrand: any[] = [];
   selectedPrice: number = 0;
+
+  filteredData: any[] = [];
+
+  @Output() filteredDataEvent = new EventEmitter<any>();
 
   constructor(private dataService: DataService) {}
 
@@ -38,5 +49,16 @@ export class NavbarComponent implements OnInit {
         });
       }
     });
+  }
+
+  ngOnChanges() {
+    this.filteredData.push({
+      category: this.selectedCategory,
+      rating: this.selectedRating,
+      brand: this.selectedBrand,
+      price: this.selectedPrice,
+    });
+
+    this.filteredDataEvent.emit(this.filteredData);
   }
 }

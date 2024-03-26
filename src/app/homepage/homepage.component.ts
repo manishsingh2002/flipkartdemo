@@ -8,8 +8,11 @@ import { DataService } from '../data.service';
 })
 export class HomepageComponent {
   productdata: any[] = [];
+  receivedFilteredData: any;
   constructor(private dataService: DataService) {}
-  @Input() updatedvallue: any;
+
+  @Input() filteredData: any;
+
   ngOnInit() {
     this.dataService.getData().subscribe((response) => {
       if (response && response.products) {
@@ -19,5 +22,6 @@ export class HomepageComponent {
         });
       }
     });
+    console.log(this.filteredData);
   }
 }
