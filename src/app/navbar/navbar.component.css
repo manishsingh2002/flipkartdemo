@@ -1,0 +1,63 @@
+/* Base styles */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.container-fluid {
+  padding: 1rem;
+}
+
+/* Navbar styles */
+
+.navbar {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.navbar-toggler {
+  border-color: #ddd;
+}
+
+.collapse {
+  /* Adjust collapse animation duration as needed */
+  transition-duration: 0.3s;
+}
+
+.nav-link {
+  color: #333;
+  margin-right: 1rem;
+}
+
+.dropdown-menu {
+  background-color: #fff;
+  border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  color: #333;
+  padding: 0.5rem 1rem;
+}
+
+.form-select {
+  width: auto; /* Adjust width as needed */
+  margin-right: 1rem;
+}
+
+.navbar-text {
+  color: #666;
+}
+
+/* Media queries for responsiveness */
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,18 @@
+<p>homepage works!</p>
+<div class="container" *ngFor="let product of productdata">
+  <div class="card">
+    <div class="img" *ngIf="product.images?.length > 0">
+      <img
+        [src]="product.images[0]"
+        alt=""
+        onError="this.src='placeholder.jpg'"
+      />
+    </div>
+    <div class="about">
+      <div class="productname">{{ product.title }}</div>
+      <div class="price">Price: ${{ product.price }}</div>
+      <div class="rating">Rating: {{ product.rating }}</div>
+    </div>
+    <div class="description">{{ product.description }}</div>
+  </div>
+</div>
