@@ -12,7 +12,7 @@ import { DataService } from '../data.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit, OnChanges {
+export class NavbarComponent implements OnInit {
   public data: any;
   public category: any[] = [];
   public brand: any[] = [];
@@ -51,7 +51,7 @@ export class NavbarComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges() {
+  OnChanges() {
     this.filteredData.push({
       category: this.selectedCategory,
       rating: this.selectedRating,
