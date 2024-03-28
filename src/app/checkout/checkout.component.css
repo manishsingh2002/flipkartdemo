@@ -1,0 +1,64 @@
+.container {
+  display: grid;
+  grid-template-columns: 45% 1fr;
+  width: fit-content;
+  margin: 0 auto;
+}
+.imagessection {
+  grid-column: span 2;
+  text-align: center;
+  padding: 1rem;
+  width: 600px;
+  height: 500px;
+}
+.header {
+  text-align: center;
+}
+
+.img-container {
+  width: 100%; /* Images fill the carousel width */
+  transition: transform 0.5s ease-in-out;
+  display: flex; /* Smooth transitions for sliding */
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  margin-bottom: 0.5rem;
+}
+
+.counter {
+  font-weight: bold;
+  color: #333;
+  margin-top: 1rem;
+}
+
+.prev-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  opacity: 0.5;
+  cursor: pointer;
+  padding: 0 1rem; /* Adjust padding as needed */
+}
+
+.prev-button {
+  left: 0;
+}
+
+.next-button {
+  right: 0;
+}
+
+/* .carousel:hover .prev-button,
+.carousel:hover .next-button {
+  opacity: 1; /* Show buttons on hover */

@@ -1,44 +1,106 @@
-<p>navbar works!</p>
-<div class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="category">
-    <select name="categories" [(ngModel)]="selectedCategory">
-      <option value="">Select categories</option>
-      <option *ngFor="let category of category" [value]="category">
-        {{ category }}
-      </option>
-    </select>
-  </div>
-  <!-- brand -->
-  <div class="brand">
-    <select name="brand" [(ngModel)]="selectedBrand">
-      <option value="">Select brand</option>
-      <option *ngFor="let brand of brand" [value]="brand">
-        {{ brand }}
-      </option>
-    </select>
-    <!-- price -->
-    <div class="price">
-      <select name="price" [(ngModel)]="selectedPrice">
-        <option value="">Select price</option>
-        <option *ngFor="let prices of price" [value]="prices">
-          {{ prices }}
-        </option>
-      </select>
-
-      <div class="rating">
-        <select name="rating" [(ngModel)]="selectedRating">
-          <option value="">Select rating</option>
-          <option *ngFor="let rating of rating" [value]="rating">
-            {{ rating }}
-          </option>
-        </select>
-        <!--  -->
-        <button (submit)="OnChanges()">submit</button>
-        <!--  -->
-        {{ selectedCategory }}{{ selectedBrand }}{{ selectedPrice
-        }}{{ selectedRating }}
-        <!--  -->
+<div class="body">
+  <nav class="navbar">
+    <div class="categories">
+      <h2 (click)="togglecategory()">categories</h2>
+      <div *ngIf="togglecateegories">
+        <label *ngFor="let categories of category">
+          <input
+            type="checkbox"
+            name=" categories "
+            value="{{ categories }}"
+            (change)="oncategoryChange($event)"
+          />
+          <p>{{ categories }}</p>
+        </label>
       </div>
     </div>
+    <br />
+    <!--  -->
+    <!-- <div class="brand">
+      <h2 (click)="togglebrand()">brand</h2>
+      <div *ngIf="togglebrandings">
+        <label *ngFor="let brand of brand">
+          <input
+            type="checkbox"
+            name=" brand "
+            value="{{ brand }}"
+            (change)="onbrandchange($event)"
+          />{{ brand }}
+        </label>
+      </div>
+    </div>
+    <br /> -->
+    <div class="brand">
+      <h2 (click)="togglebrand()">Brand</h2>
+
+      <div *ngIf="togglebrandings">
+        <div class="div" *ngIf="selectedcategorybrands.length > 0">
+          <label *ngFor="let brand of selectedcategorybrands">
+            <input
+              type="checkbox"
+              name="brand"
+              value="{{ brand.brand }}"
+              (change)="onbrandchange($event)"
+            />
+            {{ brand.brand }}
+          </label>
+        </div>
+
+        <div
+          class="div"
+          *ngIf="selectedcategorybrands.length === 0 && brand.length > 0"
+        >
+          <label *ngFor="let brand of brand">
+            <input
+              type="checkbox"
+              name="brand"
+              value="{{ brand }}"
+              (change)="onbrandchange($event)"
+            />
+            {{ brand }}
+          </label>
+        </div>
+
+        <p *ngIf="selectedcategorybrands.length === 0 && brand.length === 0">
+          No brands available.
+        </p>
+      </div>
+    </div>
+    <br />
+
+    <br />
+    <!--  -->
+    <div class="rating">
+      <h2 (click)="togglerating()">rating</h2>
+      <div *ngIf="toggleratings">
+        <label *ngFor="let rating of rating">
+          <input
+            type="checkbox"
+            name="rating "
+            value="{{ rating }}"
+            (change)="onratingChange($event)"
+          />{{ rating }}
+        </label>
+      </div>
+    </div>
+    <br />
+    <div class="price">
+      <h2 (click)="toggleprice()">price</h2>
+      <div *ngIf="togglepricings">
+        <label *ngFor="let price of price">
+          <input
+            type="checkbox"
+            name=" price "
+            value="{{ price }}"
+            (change)="onPriceChange($event)"
+          />
+          {{ price }}
+        </label>
+      </div>
+    </div>
+    <br />
+  </nav>
+  <div class="display">
+    <app-homepage [filteredData]="filtereddata"></app-homepage>
   </div>
 </div>

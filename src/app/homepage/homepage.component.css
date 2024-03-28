@@ -1,24 +1,50 @@
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 20px;
+/* Button Container (Optional) */
+.button-container {
+  text-align: center; /* Center buttons horizontally */
+  margin-bottom: 20px; /* Optional spacing */
 }
 
+/* Buttons */
+button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Card Container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 80%;
+}
 .card {
-  width: 400px; /* Fixed width */
-  height: 600px; /* Fixed height */
-  background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  display: inline-block;
+  width: 33.33%;
+  box-sizing: border-box;
+  padding: 10px;
+  width: calc(33.33% - 10px);
   margin: 10px;
-  padding: 15px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.container {
+  text-align: center; /* Optional: To center the cards in the container */
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: calc(50% - 10px);
+  }
 }
 
 .img img {
-  width: 100%; /* Fills the card width */
-  height: 350px; /* Fixed image height */
-  object-fit: cover; /* Scales image to fit within container */
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
 }
 
 .about {
@@ -43,4 +69,10 @@
   /* Adjust height as needed for the remaining space */
   height: calc(100% - 350px - 40px); /* Subtract image height and padding */
   overflow-y: auto; /* Enable scrolling if description overflows */
+}
+.Centered {
+  display: flex;
+}
+.hommebutton {
+  text-align: center;
 }

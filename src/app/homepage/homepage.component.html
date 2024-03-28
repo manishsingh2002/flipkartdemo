@@ -1,19 +1,51 @@
-<p>homepage works!</p>
-{{ filteredData }}
-<div class="container" *ngFor="let product of productdata">
-  <div class="card">
-    <div class="img" *ngIf="product.images?.length > 0">
-      <img
-        [src]="product.images[0]"
-        alt=""
-        onError="this.src='placeholder.jpg'"
-      />
+<div class="hommebutton">
+  <button (click)="[filtering(), togglehomepage()]">search</button>
+  <button (click)="resetsearch()">reset</button>
+  <button (click)="togglechckoutpage()">checkoutpage</button>
+</div>
+<div class="div" *ngIf="togglecheckout">
+  <div class="container" *ngFor="let product of filteredProducts">
+    <div class="condition" *ngIf="filteredProducts.length > 0">
+      <div class="card" style="width: 27rem; border-radius: 25px">
+        <img
+          style="width: 25rem; height: 20rem; border-radius: 25px"
+          class="card-img-top"
+          [src]="product.images[0]"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-text">Price: ${{ product.price }}</p>
+          <p class="card-text">Price: ${{ product.description }}</p>
+          <a href="#" class="btn btn-primary" (click)="addTocart(product)"
+            >Add to Cart</a
+          >
+        </div>
+      </div>
     </div>
-    <div class="about">
-      <div class="productname">{{ product.title }}</div>
-      <div class="price">Price: ${{ product.price }}</div>
-      <div class="rating">Rating: {{ product.rating }}</div>
-    </div>
-    <div class="description">{{ product.description }}</div>
   </div>
 </div>
+<div class="Centered" *ngIf="togglecheckout">
+  <div class="container" *ngFor="let product of productdata">
+    <div class="condition" *ngIf="toggle">
+      <div class="card" style="width: 27rem; border-radius: 25px">
+        <img
+          style="width: 25rem; height: 20rem; border-radius: 25px"
+          class="card-img-top"
+          [src]="product.images[0]"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-text">Price: ${{ product.price }}</p>
+          <p class="card-text">Price: ${{ product.description }}</p>
+          <a href="#" class="btn btn-primary" (click)="addTocart(product)"
+            >Add to Cart</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div> -->
+<app-checkout *ngIf="checkout" [cart]="cartData"></app-checkout>
