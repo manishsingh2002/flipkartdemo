@@ -9,6 +9,10 @@ body {
 .container-fluid {
   padding: 1rem;
 }
+.category-dropdown {
+  max-height: 200px; /* Adjust height as needed */
+  overflow-y: auto;
+}
 
 /* Navbar styles */
 

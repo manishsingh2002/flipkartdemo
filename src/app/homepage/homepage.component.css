@@ -72,6 +72,7 @@ button {
 }
 .Centered {
   display: flex;
+  width: 100%;
 }
 .hommebutton {
   text-align: center;

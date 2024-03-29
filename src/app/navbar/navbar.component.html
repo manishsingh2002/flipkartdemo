@@ -6,9 +6,9 @@
         <label *ngFor="let categories of category">
           <input
             type="checkbox"
-            name=" categories "
+            name="categories"
             value="{{ categories }}"
-            (change)="oncategoryChange($event)"
+            (change)="onvalueChange($event)"
           />
           <p>{{ categories }}</p>
         </label>
@@ -16,56 +16,21 @@
     </div>
     <br />
     <!--  -->
-    <!-- <div class="brand">
+    <div class="brand">
       <h2 (click)="togglebrand()">brand</h2>
       <div *ngIf="togglebrandings">
         <label *ngFor="let brand of brand">
           <input
             type="checkbox"
-            name=" brand "
+            name="brand"
             value="{{ brand }}"
-            (change)="onbrandchange($event)"
+            (change)="onvalueChange($event)"
           />{{ brand }}
         </label>
       </div>
     </div>
-    <br /> -->
-    <div class="brand">
-      <h2 (click)="togglebrand()">Brand</h2>
+    <br />
 
-      <div *ngIf="togglebrandings">
-        <div class="div" *ngIf="selectedcategorybrands.length > 0">
-          <label *ngFor="let brand of selectedcategorybrands">
-            <input
-              type="checkbox"
-              name="brand"
-              value="{{ brand.brand }}"
-              (change)="onbrandchange($event)"
-            />
-            {{ brand.brand }}
-          </label>
-        </div>
-
-        <div
-          class="div"
-          *ngIf="selectedcategorybrands.length === 0 && brand.length > 0"
-        >
-          <label *ngFor="let brand of brand">
-            <input
-              type="checkbox"
-              name="brand"
-              value="{{ brand }}"
-              (change)="onbrandchange($event)"
-            />
-            {{ brand }}
-          </label>
-        </div>
-
-        <p *ngIf="selectedcategorybrands.length === 0 && brand.length === 0">
-          No brands available.
-        </p>
-      </div>
-    </div>
     <br />
 
     <br />
@@ -76,9 +41,9 @@
         <label *ngFor="let rating of rating">
           <input
             type="checkbox"
-            name="rating "
+            name="rating"
             value="{{ rating }}"
-            (change)="onratingChange($event)"
+            (change)="onvalueChange($event)"
           />{{ rating }}
         </label>
       </div>
@@ -90,9 +55,9 @@
         <label *ngFor="let price of price">
           <input
             type="checkbox"
-            name=" price "
+            name="price"
             value="{{ price }}"
-            (change)="onPriceChange($event)"
+            (change)="onvalueChange($event)"
           />
           {{ price }}
         </label>
@@ -101,6 +66,6 @@
     <br />
   </nav>
   <div class="display">
-    <app-homepage [filteredData]="filtereddata"></app-homepage>
+    <app-homepage [filteredData]="filteredData"></app-homepage>
   </div>
 </div>

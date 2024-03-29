@@ -3,7 +3,10 @@
   <button (click)="resetsearch()">reset</button>
   <button (click)="togglechckoutpage()">checkoutpage</button>
 </div>
-<div class="div" *ngIf="togglecheckout">
+
+{{ filteredData | json }}
+
+<div class="divm" *ngIf="togglecheckout">
   <div class="container" *ngFor="let product of filteredProducts">
     <div class="condition" *ngIf="filteredProducts.length > 0">
       <div class="card" style="width: 27rem; border-radius: 25px">
