@@ -15,17 +15,35 @@
           />
         </div>
         <!-- {{ product | json }} -->
-        <div class="card-body">
-          <h5 class="card-title">{{ product.title }}</h5>
-          <p class="card-text">Price: ${{ product.price }}</p>
-          <p class="card-text">Description: {{ product.description }}</p>
+        <div class="card-body" style="border-color: black; border-radius: 5px">
+          <h5 class="card-title">
+            <strong>{{ product.title }}</strong>
+          </h5>
+          <p class="card-text">
+            <strong>Price: ${{ product.price }}</strong>
+          </p>
+          <p class="card-text">
+            <strong>Description: {{ product.description }}</strong>
+          </p>
         </div>
         <div>
-          <button name="+" (click)="counteradd(product)">+</button>
-          <button name="-" (click)="countersub(product)">-</button>
+          <button
+            class="btn btn-primary btn-lg active"
+            name="+"
+            (click)="counteradd(product)"
+          >
+            +
+          </button>
+          <button
+            class="btn btn-primary btn-lg active"
+            name="-"
+            (click)="countersub(product)"
+          >
+            -
+          </button>
           <div class="final">
-            <p>Qyantity : {{ product.quantity }}</p>
-            <p>Final price with discunt :{{ product.final_price }}</p>
+            <h3>Qyantity : {{ product.quantity }}</h3>
+            <h3>Final price with discunt :{{ product.final_price }}</h3>
           </div>
         </div>
       </div>

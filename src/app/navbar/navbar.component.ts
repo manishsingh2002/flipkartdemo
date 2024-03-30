@@ -13,7 +13,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  public data: any;
+  public data: any[] = [];
   // basic categories storing data
   public category: any[] = [];
   public brand: any[] = [];
@@ -26,6 +26,10 @@ export class NavbarComponent implements OnInit {
   selectedBrands: string[] = [];
   selectedPrices: any = [];
   //
+  filteredbrand: any[] = [];
+  filteredcategory: any[] = [];
+  filterbrand = false;
+  unsortedbrand = true;
   //
   togglecateegories = false;
   togglebrandings = false;
@@ -34,25 +38,31 @@ export class NavbarComponent implements OnInit {
   productdata: any[] = [];
   selectedcategorybrands: any = [];
   // input data for child elements
+  //
   public filteredData: { [key: string]: string[] | number[] } = {
     category: this.selectedCategories,
     brand: this.selectedBrands,
     price: this.selectedPrices,
     rating: this.selectedRatings,
   };
-
+  //
   // toggling
   constructor(private dataService: DataService) {}
 
   // main filder where we are storing the categories names in the theeir array
   ngOnInit() {
     this.dataService.getData().subscribe((response) => {
+      this.data = response.products;
+      console.log(',,,,,,,,,,,,,,,', this.data);
+
       if (response && response.products) {
         response.products.forEach((element: any) => {
           if (!this.category.includes(element.category)) {
             this.category.push(element.category);
           }
+
           if (!this.brand.includes(element.brand)) {
+            //
             this.brand.push(element.brand);
           }
           if (!this.price.includes(element.price)) {
@@ -66,6 +76,55 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
+  ///////////////////////////////////////////////////////////
+  // brandchange() {
+  //   this.data.forEach((element: any) => {
+  //     // console.log('element.category', element.category);
+  //     if (this.selectedCategories.includes(element.category)) {
+  //       this.filteredcategory.push(element);
+  //     }
+  //     console.log('filteredcategory', this.filteredcategory);
+  //   });
+  //   // ???
+  //   this.filteredcategory.forEach((element: any) => {
+  //     this.filteredbrand.push(element.brand);
+  //   });
+  //   if (this.filteredbrand.length > 0) {
+  //     this.filterbrand = true;
+  //     this.unsortedbrand = false;
+  //     // /////////////////////
+  //   }
+
+  //   console.log('filteredbrand', this.filteredbrand);
+  //   this.productdata = this.filteredbrand;
+  // }
+  brandchange() {
+    // Clear filteredcategory before iterating
+    this.filteredcategory.length = 0; // Reset the array
+
+    this.data.forEach((element: any) => {
+      if (this.selectedCategories.includes(element.category)) {
+        this.filteredcategory.push(element);
+      }
+    });
+
+    console.log('filteredcategory', this.filteredcategory);
+
+    // Update filteredbrand based on filteredcategory
+    this.filteredbrand = []; // Reset the array
+    this.filteredcategory.forEach((element: any) => {
+      this.filteredbrand.push(element.brand);
+    });
+
+    // Update flags based on filteredbrand length
+    this.filterbrand = this.filteredbrand.length > 0;
+    this.unsortedbrand = !this.filterbrand;
+
+    console.log('filteredbrand', this.filteredbrand);
+    this.productdata = this.filteredbrand;
+  }
+
+  ///////
   ////////////////////////////////////////////////////////////////////////////////////
   togglecategory() {
     this.togglecateegories = !this.togglecateegories;
@@ -90,6 +149,7 @@ export class NavbarComponent implements OnInit {
     if (isChecked) {
       if (name === 'categories') {
         this.selectedCategories.push(value);
+        console.log('mmmmmmmmmmmmmmmmmmmmm', this.selectedCategories);
       }
     } else {
       const index = this.selectedCategories.indexOf(value);
