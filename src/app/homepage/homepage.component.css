@@ -1,79 +1,40 @@
-/* Button Container (Optional) */
-.button-container {
-  text-align: center; /* Center buttons horizontally */
-  margin-bottom: 20px; /* Optional spacing */
-}
+/* styles.css */
 
-/* Buttons */
-button {
-  margin-right: 10px;
-  padding: 10px 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-/* Card Container */
-.card-container {
+.centered .container {
   display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  width: 80%;
+  gap: 20px; /* Adjust spacing between cards */
 }
+
 .card {
-  display: inline-block;
-  width: 33.33%;
-  box-sizing: border-box;
-  padding: 10px;
-  width: calc(33.33% - 10px);
-  margin: 10px;
-  border: 1px solid #ddd;
-  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+  gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  width: 300px; /* Adjust card width as needed */
 }
 
-.container {
-  text-align: center; /* Optional: To center the cards in the container */
+.card:hover {
+  transform: translateY(-5px); /* Adjust hover effect */
 }
 
-@media (max-width: 768px) {
-  .card {
-    width: calc(50% - 10px);
-  }
-}
-
-.img img {
+.card img {
   width: 100%;
-  height: 350px;
+  height: auto;
   object-fit: cover;
 }
 
-.about {
-  margin-top: 10px;
+.card-content {
+  padding: 20px;
 }
 
-.productname {
-  font-weight: bold;
-  font-size: 18px;
-  margin-bottom: 5px;
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
-.price,
-.rating {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 5px;
-}
-
-.description {
-  font-size: 14px;
-  /* Adjust height as needed for the remaining space */
-  height: calc(100% - 350px - 40px); /* Subtract image height and padding */
-  overflow-y: auto; /* Enable scrolling if description overflows */
-}
-.Centered {
-  display: flex;
-  width: 100%;
-}
-.hommebutton {
-  text-align: center;
+.card p {
+  font-size: 0.9rem;
+  color: #777;
 }

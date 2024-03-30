@@ -76,10 +76,23 @@ export class HomepageComponent {
 
   // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // add to cart section
+  // cartData: any[] = [];
+
+  // addTocart(product: any) {
+  //   this.cartData.push(product);
+  //   console.log(this.cartData);
+  // }
+  // ///////////////////  //////////
   cartData: any[] = [];
+  // Data: any[] = [];
 
   addTocart(product: any) {
-    this.cartData.push(product);
-    console.log(this.cartData);
+    // console.log(product);
+    // this.Data.push(product);
+    product.forEach((ele: any) => {
+      const updatedProduct = { ...ele, quantity: 0, final_price: 0 };
+      this.cartData.push(updatedProduct);
+    });
+    console.log('this.cartData', this.cartData);
   }
 }

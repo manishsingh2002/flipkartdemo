@@ -51,12 +51,9 @@ export class NavbarComponent implements OnInit {
         response.products.forEach((element: any) => {
           if (!this.category.includes(element.category)) {
             this.category.push(element.category);
-            // console.log('cateegory', this.category);
           }
           if (!this.brand.includes(element.brand)) {
             this.brand.push(element.brand);
-
-            // console.log('brand', this.brand);
           }
           if (!this.price.includes(element.price)) {
             this.price.push(element.price);
@@ -64,7 +61,6 @@ export class NavbarComponent implements OnInit {
           }
           if (!this.rating.includes(element.rating)) {
             this.rating.push(element.rating);
-            // console.log('rating', this.rating);
           }
         });
       }
@@ -84,14 +80,12 @@ export class NavbarComponent implements OnInit {
     this.togglepricings = !this.togglepricings;
   }
 
-  ////////////////////////  /////// //////////////////////////////////////////////////////////\
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////\
 
   onvalueChange(event: any) {
     const name = event.target.name;
     const value = event.target.value;
     const isChecked = event.target.checked;
-    //
-
     // console.log(value, 'manishdkjabdbwawd', name);
     if (isChecked) {
       if (name === 'categories') {
@@ -143,11 +137,6 @@ export class NavbarComponent implements OnInit {
         }
         console.log('filteredDatajqvdbwbqbdwdhid', this.filteredData);
       }
-      // //
-      // console.log('Selected prices:', name, this.selectedPrices);
-      // console.log('seleccted categoris', this.selectedCategories);
-      // console.log('seleccted rating', this.selectedRatings);
-      // console.log('seleccted brand', this.selectedBrands);
     }
   }
 }

@@ -1,9 +1,23 @@
 <div class="hommebutton">
-  <button (click)="[filtering(), togglehomepage()]">search</button>
-  <button (click)="resetsearch()">reset</button>
-  <button (click)="togglechckoutpage()">checkoutpage</button>
+  <button
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    (click)="[filtering(), togglehomepage()]"
+  >
+    Search
+  </button>
+  <button
+    class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+    (click)="resetsearch()"
+  >
+    Reset
+  </button>
+  <button
+    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+    (click)="togglechckoutpage()"
+  >
+    Checkout Page
+  </button>
 </div>
-
 {{ filteredData | json }}
 
 <div class="divm" *ngIf="togglecheckout">
@@ -30,25 +44,24 @@
 </div>
 <div class="Centered" *ngIf="togglecheckout">
   <div class="container" *ngFor="let product of productdata">
-    <div class="condition" *ngIf="toggle">
-      <div class="card" style="width: 27rem; border-radius: 25px">
-        <img
-          style="width: 25rem; height: 20rem; border-radius: 25px"
-          class="card-img-top"
-          [src]="product.images[0]"
-          alt="Card image cap"
-        />
-        <div class="card-body">
-          <h5 class="card-title">{{ product.title }}</h5>
-          <p class="card-text">Price: ${{ product.price }}</p>
-          <p class="card-text">Price: ${{ product.description }}</p>
-          <a href="#" class="btn btn-primary" (click)="addTocart(product)"
-            >Add to Cart</a
-          >
-        </div>
+    <div *ngIf="toggle" class="card" style="width: 27rem; border-radius: 25px">
+      <img
+        style="width: 25rem; height: 20rem; border-radius: 25px"
+        class="card-img-top"
+        [src]="product.images[0]"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">Price: ${{ product.price }}</p>
+        <p class="card-text">Price: ${{ product.description }}</p>
+        <a href="#" class="btn btn-primary" (click)="addTocart([product])"
+          >Add to Cart</a
+        >
       </div>
     </div>
   </div>
 </div>
+
 <!-- </div> -->
 <app-checkout *ngIf="checkout" [cart]="cartData"></app-checkout>
