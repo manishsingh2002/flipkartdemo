@@ -18,8 +18,8 @@
     Checkout Page
   </button>
 </div>
-{{ filteredData | json }}
-
+<!-- {{ filteredData | json }}
+{{ filteredProducts | json }} -->
 <div class="divm" *ngIf="togglecheckout">
   <div class="container" *ngFor="let product of filteredProducts">
     <div class="condition" *ngIf="filteredProducts.length > 0">

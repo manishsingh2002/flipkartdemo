@@ -15,7 +15,7 @@
       </div>
     </div>
     <br />
-    <!--  -->
+    <!-- brand normal -->
     <div class="brand">
       <h2 (click)="togglebrand()">brand</h2>
       <div *ngIf="togglebrandings">
@@ -26,9 +26,11 @@
               name="brand"
               value="{{ brand }}"
               (change)="onvalueChange($event)"
-            />{{ brand }}
+            />
+            {{ brand }}
           </label>
         </div>
+        <!-- filtered brand -->
         <div *ngIf="filteredbrand.length === 0">
           <label *ngFor="let brand of brand">
             <input
@@ -42,35 +44,6 @@
       </div>
     </div>
 
-    <!--  -->
-    <!-- <div class="brand">
-      <h2 (click)="togglebrand()">brand</h2>
-      <div *ngIf="togglebrandings">
-        <div *ngIf="filterbrand; then nofiltereddata">
-          <label *ngFor="let brand of brand">
-            <input
-              type="checkbox"
-              name="brand"
-              value="{{ brand }}"
-              (change)="onvalueChange($event)"
-            />{{ brand }}
-          </label>
-        </div>
-
-        
-        <ng-template #nofiltereddata>
-          <label *ngFor="let brand of filteredbrand">
-            <input
-              type="checkbox"
-              name="brand"
-              value="{{ brand }}"
-              (change)="onvalueChange($event)"
-            />{{ brand }}
-          </label>
-        </ng-template>
-      </div> -->
-    <!--  -->
-    <!-- </div> -->
     <br />
 
     <br />
@@ -91,6 +64,7 @@
       </div>
     </div>
     <br />
+
     <div class="price">
       <h2 (click)="toggleprice()">price</h2>
       <div *ngIf="togglepricings">
