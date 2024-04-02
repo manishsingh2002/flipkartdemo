@@ -21,7 +21,8 @@
 <!-- {{ filteredData | json }}
 {{ filteredProducts | json }} -->
 <div class="divm" *ngIf="togglecheckout">
-  <div class="container" *ngFor="let product of filteredProducts">
+  <!-- class="container" -->
+  <div *ngFor="let product of filteredProducts">
     <div class="condition" *ngIf="filteredProducts.length > 0">
       <div class="card" style="width: 27rem; border-radius: 25px">
         <img
@@ -34,8 +35,11 @@
           <h5 class="card-title">{{ product.title }}</h5>
           <p class="card-text">Price: ${{ product.price }}</p>
           <p class="card-text">Price: ${{ product.description }}</p>
-          <a href="#" class="btn btn-primary" (click)="addTocart(product)"
+          <a href="#" class="btn btn-primary" (click)="addTocart([product])"
             >Add to Cart</a
+          >
+          <a href="#" class="btn btn-primary" (click)="removeFromCart(product)"
+            >remove</a
           >
         </div>
       </div>
@@ -43,7 +47,8 @@
   </div>
 </div>
 <div class="Centered" *ngIf="togglecheckout">
-  <div class="container" *ngFor="let product of productdata">
+  <!-- class="container" -->
+  <div *ngFor="let product of productdata">
     <div *ngIf="toggle" class="card" style="width: 27rem; border-radius: 25px">
       <img
         style="width: 25rem; height: 20rem; border-radius: 25px"
@@ -57,6 +62,9 @@
         <p class="card-text">Price: ${{ product.description }}</p>
         <a href="#" class="btn btn-primary" (click)="addTocart([product])"
           >Add to Cart</a
+        >
+        <a href="#" class="btn btn-primary" (click)="removeFromCart(product)"
+          >remove</a
         >
       </div>
     </div>

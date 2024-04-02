@@ -137,6 +137,7 @@ export class NavbarComponent implements OnInit {
     console.log(isChecked);
 
     if (isChecked) {
+      // this.selectedCategories.length = 0;
       if (name === 'categories') {
         this.selectedCategories.push(value);
       }
@@ -144,25 +145,26 @@ export class NavbarComponent implements OnInit {
       const index = this.selectedCategories.indexOf(value);
       if (index !== -1) {
         this.selectedCategories.splice(index, 1);
+        // console.log('this.selectedCategories', this.selectedCategories);
       }
     }
 
     // for brand
     if (isChecked) {
+      // this.selectedBrands.length = 0;
       if (name === 'brand') {
         this.selectedBrands.push(value);
       }
-      console.log('mmmmmmmmmmmmmmmmmmmmm', this.selectedBrands);
     } else {
       const index = this.selectedBrands.indexOf(value);
       if (index !== -1) {
         this.selectedBrands.splice(index, 1);
+        console.log(this.selectedBrands);
       }
-      console.log('kkkkkkkkkkkkkkkkkkkkkkk', this.selectedBrands);
     }
 
-    // for pricce
     if (isChecked) {
+      // this.selectedPrices.length = 0;
       if (name === 'price') {
         this.selectedPrices.push(value);
       }
@@ -170,13 +172,14 @@ export class NavbarComponent implements OnInit {
       const index = this.selectedPrices.indexOf(value);
       if (index !== -1) {
         this.selectedPrices.splice(index, 1);
+        // console.log('sekected price', this.selectedPrices);
       }
-      console.log('sekected price', this.selectedPrices);
-      console.log('filteredData', this.filteredData);
+      // console.log('filteredData', this.filteredData);
     }
 
     //  ratinng
     if (isChecked) {
+      this.selectedRatings.length = 0;
       // console.log('this.rating', this.selectedRatings);
       if (name === 'rating') {
         this.selectedRatings.push(value);
@@ -186,7 +189,8 @@ export class NavbarComponent implements OnInit {
       if (index !== -1) {
         this.selectedRatings.splice(index, 1);
       }
+      // console.log('hhhhhhhhhhhhhhh', this.selectedRatings);
     }
-    console.log('filteredDatajqvdbwbqbdwdhid', this.filteredData);
+    console.log('filteredDatajqvdbwbqbdwdhidmmmmmmmmmmmmm', this.filteredData);
   }
 }
