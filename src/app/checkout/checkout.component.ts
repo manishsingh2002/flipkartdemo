@@ -7,10 +7,21 @@ import { Component, Input } from '@angular/core';
 })
 export class CheckoutComponent {
   @Input() cart: any;
+  // carts: any[] = [];
   quantity = 0;
   finalprice = 0;
   constructor() {}
 
+  remove(event: any) {
+    this.cart.forEach((ele: any) => {
+      if (ele.quantity === 0) {
+        if (ele.id === event.id) {
+          console.log('ele', ele);
+          this.cart.splice(this.cart.indexOf(ele), 1);
+        }
+      }
+    });
+  }
   counteradd(event: any) {
     this.quantity = this.quantity + 1;
     event.quantity = this.quantity;

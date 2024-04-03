@@ -1,11 +1,159 @@
-/* styles.css (or your component-specific CSS file) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.centered .container {
+  display: flex;
+  gap: 20px;
+}
+
+.container-fluid {
+  display: inline-flex;
+}
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Adjust as needed */
+  justify-content: space-between;
 }
 
 .card {
-  flex-basis: 25%; /* Adjust to control the number of cards per row */
-  /* Other card styling (e.g., padding, margin, border, etc.) */
+  flex-basis: 25%;
+}
+
+.card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  overflow: hidden;
+  gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  width: 300px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.product-box {
+  display: grid;
+  grid-template-columns: 2fr 7fr 3fr;
+  margin: 10px;
+  padding: 20px;
+  gap: 50px;
+  background-color: #f0f0f0;
+}
+
+.product-img-box > img {
+  height: 300px;
+}
+
+.product-details h2 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #2874f0;
+  line-height: 18px;
+}
+
+.product-details > .rating-container > .rating-icon {
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #388e3c;
+  padding: 8px 10px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.product-details > .rating-container > .rating-text {
+  color: #878787;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 500;
+}
+
+.product-details > ul > li {
+  color: #212121;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  list-style-color: #878787;
+  list-style: none;
+}
+
+/* css for changing bullet color for li */
+.product-details > ul > li::before {
+  content: "\2022";
+  color: #878787;
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em;
+}
+
+.product-price > .price > span {
+  font-size: 25px;
+  font-weight: 500;
+  color: #212121;
+  line-height: 25px;
+}
+.product-price > .price > img {
+  height: 20px;
+  padding-left: 30px;
+}
+.product-price > .prev-price > span:nth-child(1) {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #878787;
+}
+
+.product-price > .prev-price > span:nth-child(2) {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 13px;
+  color: #388e3c;
+}
+
+.product-price > .fd {
+  color: #000000;
+  line-height: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.product-price > .exchange {
+  color: #000000;
+  line-height: 14px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.product-price > .offer {
+  color: #26a541;
+  line-height: 14px;
+  font-size: 14px;
+  font-weight: 700;
 }

@@ -1,52 +1,37 @@
-<div class="header">
-  <h1><strong>Checkout Section</strong></h1>
-</div>
-<!-- {{ cart | json }} -->
-<div class="container">
-  <div class="carousel">
-    <div *ngFor="let product of cart">
-      <div class="card" style="width: 27rem; border-radius: 25px">
-        <div class="img-container" *ngFor="let image of product.images">
-          <img
-            class="img-container"
-            style="width: 25rem; border-radius: 25px"
-            src="{{ image }}"
-            alt="{{ image }}"
-          />
-        </div>
-        <!-- {{ product | json }} -->
-        <div class="card-body" style="border-color: black; border-radius: 5px">
-          <h5 class="card-title">
-            <strong>{{ product.title }}</strong>
-          </h5>
-          <p class="card-text">
-            <strong>Price: ${{ product.price }}</strong>
-          </p>
-          <p class="card-text">
-            <strong>Description: {{ product.description }}</strong>
-          </p>
-        </div>
-        <div>
-          <button
-            class="btn btn-primary btn-lg active"
-            name="+"
-            (click)="counteradd(product)"
-          >
-            +
-          </button>
-          <button
-            class="btn btn-primary btn-lg active"
-            name="-"
-            (click)="countersub(product)"
-          >
-            -
-          </button>
-          <div class="final">
-            <h3>Qyantity : {{ product.quantity }}</h3>
-            <h3>Final price with discunt :{{ product.final_price }}</h3>
-          </div>
-        </div>
-      </div>
+<!--  -->
+<body *ngFor="let product of cart">
+  <div class="wrapper">
+    <!-- Replace with dynamic image data -->
+    <div class="item1 image-item">
+      <img src="{{ product.images[1] }}" alt="Image 1" />
+    </div>
+    <div class="item2 image-item">
+      <img src="{{ product.images[2] }}" alt="Image 2" />
+    </div>
+    <div class="item3 image-item">
+      <img src="{{ product.images[3] }}" alt="Image 3" />
+    </div>
+    <div class="item4 image-item">
+      <img src="{{ product.images[4] }}" alt="Image 4" />
     </div>
   </div>
-</div>
+
+  <div class="description">
+    <!-- Replace with dynamic product data -->
+    <div class="title">
+      {{ product.title }}<br />
+      price: ${{ product.price }} <br />
+      discount :{{ product.discountPercentage }}
+    </div>
+
+    <div class="price">final price:{{ product.final_price }}</div>
+    <div class="buttons">
+      <a>
+        {{ product.quantity }}
+      </a>
+      <a href="#" class="button" (click)="counteradd(product)">add</a>
+      <a href="#" class="button" (click)="countersub(product)">sub</a>
+      <a href="#" class="button" (click)="remove(product)">remove</a>
+    </div>
+  </div>
+</body>

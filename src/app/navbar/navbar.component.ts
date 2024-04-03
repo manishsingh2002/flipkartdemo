@@ -164,7 +164,7 @@ export class NavbarComponent implements OnInit {
     }
 
     if (isChecked) {
-      // this.selectedPrices.length = 0;
+      this.selectedPrices.length = 0;
       if (name === 'price') {
         this.selectedPrices.push(value);
       }
@@ -179,17 +179,15 @@ export class NavbarComponent implements OnInit {
 
     //  ratinng
     if (isChecked) {
-      this.selectedRatings.length = 0;
-      // console.log('this.rating', this.selectedRatings);
       if (name === 'rating') {
         this.selectedRatings.push(value);
       }
+      // console.log('object', this.selectedRatings);
     } else {
       const index = this.selectedRatings.indexOf(value);
       if (index !== -1) {
         this.selectedRatings.splice(index, 1);
       }
-      // console.log('hhhhhhhhhhhhhhh', this.selectedRatings);
     }
     console.log('filteredDatajqvdbwbqbdwdhidmmmmmmmmmmmmm', this.filteredData);
   }

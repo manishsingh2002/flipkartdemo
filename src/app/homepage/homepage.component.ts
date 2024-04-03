@@ -61,99 +61,80 @@ export class HomepageComponent {
     this.filteredProducts.length = 0;
     this.toggle = true;
   }
+  //
+  filteringrating() {
+    if (this.filteredData.rating.length > 0) {
+      let filteredResult = this.productdata.filter((product: any) => {
+        return this.filteredData.rating.includes(String(product.rating));
+      });
+      this.filteredProducts = filteredResult;
+    }
+  }
+
+  sortingprices() {
+    if (this.filteredData.price.length > 0) {
+      let filteredResult = this.productdata.filter((product: any) => {
+        return (
+          (this.filteredData.category.length === 0 ||
+            this.filteredData.category.includes(product.category)) &&
+          (this.filteredData.brand.length === 0 ||
+            this.filteredData.brand.includes(product.brand))
+        );
+      });
+
+      if (this.filteredData.price[0] === 'LowToHigh') {
+        filteredResult.sort((a, b) => a.price - b.price);
+      } else if (this.filteredData.price[0] === 'HighToLow') {
+        filteredResult.sort((a, b) => b.price - a.price);
+      }
+      this.filteredProducts = filteredResult;
+    }
+  }
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   filtering() {
+    let filteredResult: any[] = [];
     if (
-      this.filteredData.price.length > 0 &&
-      this.filteredData.price[0] === 'LowToHigh'
+      this.filteredData.category.length > 0 &&
+      this.filteredData.brand.length > 0
     ) {
-      let filteredResult = this.productdata.filter((product: any) => {
-        return (
-          (this.filteredData.category.length === 0 ||
-            this.filteredData.category.includes(product.category)) &&
-          (this.filteredData.brand.length === 0 ||
-            this.filteredData.brand.includes(product.brand))
-        );
-      });
+      filteredResult.push(
+        ...this.productdata.filter((product: any) => {
+          return (
+            this.filteredData.category.includes(product.category) &&
+            this.filteredData.brand.includes(product.brand)
+          );
+        })
+      );
 
-      filteredResult = filteredResult.sort((a, b) => {
-        return a.price - b.price;
-      });
-      this.filteredProducts = filteredResult;
-    }
-    /////////////////////////////////////////////////////////filtering on the basis of low to high prices//////////////////////////////////////
-    else if (
-      this.filteredData.price.length > 0 &&
-      this.filteredData.price[0] === 'HighToLow'
-    ) {
-      let filteredResult = this.productdata.filter((product: any) => {
-        return (
-          (this.filteredData.category.length === 0 ||
-            this.filteredData.category.includes(product.category)) &&
-          (this.filteredData.brand.length === 0 ||
-            this.filteredData.brand.includes(product.brand))
-        );
-      });
-
-      // Sorting the filtered products by price (ascending)
-      filteredResult = filteredResult.sort((a, b) => {
-        return b.price - a.price;
-      });
-      this.filteredProducts = filteredResult; // Create a copy to avoid modifying original sort
-    }
-    ////////////////////////////////////////////////////////filtering price from High to loww //////////////////////////////////////////////////
-    else {
-      let filteredResult: any[] = [];
-
-      if (
-        this.filteredData.category.length > 0 &&
-        this.filteredData.brand.length > 0
-      ) {
-        // Filter based on category and brand
-        filteredResult.push(
-          ...this.productdata.filter((product: any) => {
-            return (
-              this.filteredData.category.includes(product.category) &&
-              this.filteredData.brand.includes(product.brand)
-            );
-          })
-        );
-
-        if (this.filteredData.price.includes('LowToHigh')) {
-          filteredResult = filteredResult.sort((a, b) => a.price - b.price);
-          console.log('///////////////////////////////');
-        } else if (this.filteredData.price.includes('LowToHigh')) {
-          filteredResult = filteredResult.sort((a, b) => b.price - a.price);
-        } else {
-          filteredResult;
-        }
-        console.log('mmmmmmmmmmmmmmmmmmmmmm', filteredResult);
-      } else if (this.filteredData.brand.length > 0) {
-        // Filter based on brand
-        filteredResult.push(
-          ...this.productdata.filter((product: any) => {
-            return this.filteredData.brand.includes(product.brand);
-          })
-        );
-      } else if (this.filteredData.category.length > 0) {
-        // Filter based on category
-        filteredResult.push(
-          ...this.productdata.filter((product: any) => {
-            return this.filteredData.category.includes(product.category);
-          })
-        );
+      if (this.filteredData.price[0] === 'LowToHigh') {
+        filteredResult.sort((a, b) => a.price - b.price);
+      } else if (this.filteredData.price[0] === 'HighToLow') {
+        filteredResult.sort((a, b) => b.price - a.price);
       } else {
-        filteredResult.push(...this.productdata);
+        filteredResult;
       }
-
-      // Update the filteredProducts array with the filtered result
-      this.filteredProducts = filteredResult;
+    } else if (this.filteredData.brand.length > 0) {
+      filteredResult.push(
+        ...this.productdata.filter((product: any) => {
+          return this.filteredData.brand.includes(product.brand);
+        })
+      );
+    } else if (this.filteredData.category.length > 0) {
+      // Filter based on category
+      filteredResult.push(
+        ...this.productdata.filter((product: any) => {
+          return this.filteredData.category.includes(product.category);
+        })
+      );
+    } else {
+      filteredResult.push(...this.productdata);
     }
+    this.filteredProducts = filteredResult;
   }
   cartData: any[] = [];
   addTocart(product: any) {
     product.forEach((ele: any) => {
-      const updatedProduct = { ...ele, quantity: 0, final_price: 0 };
+      const updatedProduct = { ...ele, quantity: 1, final_price: 0 };
       this.cartData.push(updatedProduct);
     });
     console.log('this.cartData', this.cartData);
