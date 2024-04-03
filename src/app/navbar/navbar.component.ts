@@ -51,6 +51,7 @@ export class NavbarComponent implements OnInit {
   // main filder where we are storing the categories names in the theeir array
   ngOnInit() {
     this.price.push('LowToHigh', 'HighToLow');
+    this.rating.push('0-1🌟', '1-3🌟', '3-4🌟', '4-5🌟');
 
     this.dataService.getData().subscribe((response) => {
       this.data = response.products;
@@ -66,9 +67,9 @@ export class NavbarComponent implements OnInit {
           // if (!this.price.includes(element.price)) {
           //   this.price.push('lowtohigh', 'hightolow');
           // }
-          if (!this.rating.includes(element.rating)) {
-            this.rating.push(element.rating);
-          }
+          // if (!this.rating.includes(element.rating)) {
+          //   this.rating.push(element.rating);
+          // }
         });
       }
     });

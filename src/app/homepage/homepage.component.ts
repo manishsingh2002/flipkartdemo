@@ -65,7 +65,11 @@ export class HomepageComponent {
   filteringrating() {
     if (this.filteredData.rating.length > 0) {
       let filteredResult = this.productdata.filter((product: any) => {
-        return this.filteredData.rating.includes(String(product.rating));
+        if (this.filteredData.rating === '4-5🌟') {
+          return this.filteredData.rating.includes(
+            String(product.rating > 4 && product.rating <= 5)
+          );
+        }
       });
       this.filteredProducts = filteredResult;
     }
