@@ -1,4 +1,74 @@
-<div class="body">
+<nav>
+  <!-- <p-image
+    class="img"
+    src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    alt="Image"
+  ></p-image> -->
+
+  <p-multiSelect
+    [options]="category"
+    [(ngModel)]="selectedCategories"
+    optionLabel=""
+    name="categories"
+    defaultLabel="Select Categories"
+    (onChange)="[updateFilteredDatacategory(), brandchange()]"
+  ></p-multiSelect>
+  {{ selectedCategories }}
+  <!-- brand -->
+  <div *ngIf="filteredbrand.length === 0">
+    <!-- <h2>Select Brand</h2> -->
+    <p-multiSelect
+      [options]="brand"
+      [(ngModel)]="selectedcategorybrands"
+      optionLabel=""
+      name="brands"
+      defaultLabel="Select brands"
+      (onChange)="updateFilteredDatabrand()"
+    ></p-multiSelect>
+  </div>
+  <!--  -->
+  <div *ngIf="filteredbrand.length > 0">
+    <!-- <h2>Select Brand</h2> -->
+    <p-multiSelect
+      [options]="filteredbrand"
+      [(ngModel)]="selectedcategorybrands"
+      optionLabel=""
+      name="brands"
+      defaultLabel="Select brands"
+      (onChange)="updateFilteredDatabrand()"
+    ></p-multiSelect>
+  </div>
+  <!--  -->
+  <!--  -->
+  <div>
+    <!-- <h2>Select rating</h2> -->
+    <p-multiSelect
+      [options]="rating"
+      [(ngModel)]="selectedRatings"
+      optionLabel=""
+      name="rating"
+      defaultLabel="Select ratings"
+      (onChange)="updateFilteredDatarating()"
+    ></p-multiSelect>
+  </div>
+  <!--  -->
+  <div>
+    <!-- <h2>Select price</h2> -->
+    <p-multiSelect
+      [options]="price"
+      [(ngModel)]="selectedPrices"
+      optionLabel=""
+      name="rating"
+      defaultLabel="Select prices"
+      (onChange)="updateFilteredDataprice()"
+    ></p-multiSelect>
+  </div>
+</nav>
+<div class="footer">
+  <app-homepage [filteredData]="filteredData"></app-homepage>
+</div>
+
+<!-- <div class="body">
   <nav class="navbar">
     <div class="categories">
       <h2 (click)="togglecategory()">categories</h2>
@@ -14,9 +84,9 @@
         </label>
       </div>
     </div>
-    <br />
-    <!-- brand normal -->
-    <div class="brand">
+    <br /> -->
+<!-- brand normal -->
+<!-- <div class="brand">
       <h2 (click)="togglebrand()">brand</h2>
       <div *ngIf="togglebrandings">
         <div *ngIf="filteredbrand.length > 0">
@@ -30,7 +100,7 @@
             {{ brand }}
           </label>
         </div>
-        <!-- filtered brand -->
+        filtered brand
         <div *ngIf="filteredbrand.length === 0">
           <label *ngFor="let brand of brand">
             <input
@@ -42,15 +112,9 @@
           </label>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <br />
-
-    <br />
-
-    <br />
-    <!--  -->
-    <div class="rating">
+<!-- <div class="rating">
       <h2 (click)="togglerating()">rating</h2>
       <div *ngIf="toggleratings">
         <label *ngFor="let rating of rating">
@@ -81,7 +145,7 @@
     </div>
     <br />
   </nav>
-  <div class="footer">
-    <app-homepage [filteredData]="filteredData"></app-homepage>
-  </div>
-</div>
+
+</div> -->
+<!-- </nav>
+</div> -->

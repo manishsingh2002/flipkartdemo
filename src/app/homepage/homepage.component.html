@@ -22,53 +22,70 @@
 </div>
 
 <!--  -->
-
+{{ filteredData | json }}->
 <!--  -->
-<div class="product-box" *ngIf="togglecheckout">
-  <div *ngFor="let product of filteredProducts">
-    <div class="product-img-box">
-      <img title="{{ product.title }}" [src]="product.images[0]" />
-    </div>
-    <div class="product-details">
-      <h2>{{ product.title }}</h2>
-      <div class="rating-container">
-        <span class="rating-icon"
-          >{{ product.rating }}&nbsp;<i
-            class="fa fa-star"
-            aria-hidden="true"
-          ></i
-        ></span>
-      </div>
-      <ul>
-        <li>{{ product.description }}</li>
-        <li>
-          1 Year Manufacturer Warranty for Phone and 6 Months Warranty for
-          In-Box Accessories
-        </li>
-      </ul>
-    </div>
-    <div class="product-price">
-      <div class="price">
+<div *ngIf="togglecheckout">
+  <div *ngIf="toggle">
+    <div
+      class="card flex justify-content-center"
+      *ngFor="let product of productdata"
+    >
+      <p-card header=" {{ product.title }}" subheader="Card Subheader">
+        <ng-template pTemplate="header">
+          <img alt="Card" [src]="product.images[0]" />
+        </ng-template>
+        <h2>{{ product.final_price }}</h2>
+        {{ product.rating }}
+        <p>
+          {{ product.description }}
+        </p>
         <span>&#8377;${{ product.price }}</span>
-        <img [src]="product.images[1]" />
-      </div>
-      <div class="prev-price"></div>
-      <a href="#" class="btn btn-primary" (click)="addTocart([product])"
-        >Add to Cart</a
-      >
-      <!-- <a href="#" class="btn btn-primary" (click)="removeFromCart(product)"
-        >remove</a
-      > -->
+        <ng-template pTemplate="footer">
+          <p-button
+            label="AddtoCart"
+            icon="pi pi-check"
+            (click)="addTocart([product])"
+          ></p-button>
+        </ng-template>
+      </p-card>
     </div>
   </div>
 </div>
+<!--  -->
+<div *ngIf="togglecheckout">
+  <div
+    class="card flex justify-content-center"
+    *ngFor="let product of filteredProducts"
+  >
+    <p-card header="{{ product.title }}" subheader="Card Subheader">
+      <ng-template pTemplate="header">
+        <img alt="Card" [src]="product.images[0]" />
+      </ng-template>
+      <h2>{{ product.title }}</h2>
+      {{ product.rating }}
+      <p>
+        {{ product.description }}
+      </p>
+      <span>&#8377;${{ product.price }}</span>
+      <ng-template pTemplate="footer">
+        <p-button
+          label="AddtoCart"
+          icon="pi pi-check"
+          (click)="addTocart([product])"
+        ></p-button>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
+
+<app-checkout *ngIf="checkout" [cart]="cartData"></app-checkout>
 
 <!--  -->
-
+<!-- 
 <div class="product-box" *ngIf="togglecheckout">
   <div *ngFor="let product of productdata">
     <div *ngIf="toggle">
-      <!-- <div *ngIf="filteredProducts.length > 0"> -->
+      <div *ngIf="filteredProducts.length > 0">
       <div class="product-img-box">
         <img title="realme c33" [src]="product.images[0]" />
       </div>
@@ -102,17 +119,54 @@
         </div>
         <a href="#" class="btn btn-primary" (click)="addTocart([product])"
           >Add to Cart</a
-        >
-        <!-- <a href="#" class="btn btn-primary" (click)="removeFromCart(product)"
+        > -->
+<!-- <a href="#" class="btn btn-primary" (click)="removeFromCart(product)"
           >remove</a
         > -->
+<!-- </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- -->
+<!-- <div class="product-box" *ngIf="togglecheckout">
+  <div *ngFor="let product of filteredProducts">
+    <div class="product-img-box">
+      <img title="{{ product.title }}" [src]="product.images[0]" />
+    </div>
+    <div class="product-details">
+      <h2>{{ product.title }}</h2>
+      <div class="rating-container">
+        <span class="rating-icon"
+          >{{ product.rating }}&nbsp;<i
+            class="fa fa-star"
+            aria-hidden="true"
+          ></i
+        ></span>
       </div>
+      <ul>
+        <li>{{ product.description }}</li>
+        <li>
+          1 Year Manufacturer Warranty for Phone and 6 Months Warranty for
+          In-Box Accessories
+        </li>
+      </ul>
+    </div>
+    <div class="product-price">
+      <div class="price">
+        <span>&#8377;${{ product.price }}</span>
+        <img [src]="product.images[1]" />
+      </div>
+      <div class="prev-price"></div>
+      <a href="#" class="btn btn-primary" (click)="addTocart([product])"
+        >Add to Cart</a
+      >
+      <a href="#" class="btn btn-primary" (click)="removeFromCart(product)"
+        >remove</a
+      >
     </div>
   </div>
 </div>
-
-<app-checkout *ngIf="checkout" [cart]="cartData"></app-checkout>
-
 <!-- <div class="Centered" *ngIf="togglecheckout"> -->
 <!-- class="container" -->
 <!-- <div *ngFor="let product of productdata">

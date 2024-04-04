@@ -11,15 +11,25 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+// import { LoginComponent } from './login/login.component';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ImageModule } from 'primeng/image';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 
+// import { SignupComponent } from './signup/signup.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
     NavbarComponent,
     CheckoutComponent,
+    // LoginComponent,
+    // SignupComponent,
   ],
   imports: [
+    ButtonModule,
+    CardModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -27,6 +37,8 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     MatSelectModule,
     MatButtonModule,
     SlickCarouselModule,
+    MultiSelectModule,
+    ImageModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

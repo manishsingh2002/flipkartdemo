@@ -58,23 +58,26 @@ export class HomepageComponent {
   }
 
   resetsearch() {
+    window.location.reload();
     this.filteredProducts.length = 0;
     this.toggle = true;
   }
   //
   filteringrating() {
+    let filteredResult = [];
+
     if (this.filteredData.rating.length > 0) {
-      let filteredResult = this.productdata.filter((product: any) => {
-        if (this.filteredData.rating === '4-5🌟') {
-          return this.filteredData.rating.includes(
-            String(product.rating > 4 && product.rating <= 5)
-          );
-        }
-      });
-      this.filteredProducts = filteredResult;
+      filteredResult.push(
+        ...this.productdata.filter((product: any) => {
+          if (this.filteredData.rating == '4-5') {
+            return this.filteredData.rating.includes(
+              String(product.rating > 5)
+            );
+          }
+        })
+      );
     }
   }
-
   sortingprices() {
     if (this.filteredData.price.length > 0) {
       let filteredResult = this.productdata.filter((product: any) => {
@@ -93,6 +96,7 @@ export class HomepageComponent {
       }
       this.filteredProducts = filteredResult;
     }
+    console.log(this.filteredProducts);
   }
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   filtering() {
