@@ -1,4 +1,21 @@
 <!--  -->
+
+<div class="card">
+  <p-galleria
+    [(ngModel)]="images"
+    (value)="(images)"
+    [responsiveOptions]="responsiveOptions"
+    [containerStyle]="{ 'max-width': '640px' }"
+    [numVisible]="5"
+  >
+    <ng-template pTemplate="item" let-item>
+      <img [src]="item" style="width: 100%" />
+    </ng-template>
+  </p-galleria>
+</div>
+
+<!--  -->
+
 <body *ngFor="let product of cart">
   <div class="wrapper">
     <!-- Replace with dynamic image data -->
@@ -18,7 +35,7 @@
 
   <div class="description">
     <!-- Replace with dynamic product data -->
-    <div class="title">
+    <div class="title" appTheme>
       {{ product.title }}<br />
       price: ${{ product.price }} <br />
       discount :{{ product.discountPercentage }}

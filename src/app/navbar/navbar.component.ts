@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit, OnChanges {
   public brand: any[] = [];
   public price: any[] = [];
   public rating: any[] = [];
+  public search: any[] = [];
 
   // //
   filteredbrand: any[] = [];
@@ -39,12 +40,13 @@ export class NavbarComponent implements OnInit, OnChanges {
   selectedRatings: number[] = [];
   selectedBrands: string[] = [];
   selectedPrices: any = [];
-
-  filteredData: { [key: string]: string[] | number[] } = {
+  searchedvalue: string = ''; // Initialize with an empty string
+  filteredData: { [key: string]: string | string[] | number[] } = {
     category: [], // Initialize the 'category' key with an empty array
     brand: [],
     price: [],
     rating: [],
+    search: [],
   };
 
   // Function to update filteredData when selections change
@@ -64,7 +66,7 @@ export class NavbarComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.price.push('LowToHigh', 'HighToLow');
     this.rating.push('0-1', '1-3', '3-4', '4-5');
-
+    console.log(this.searchedvalue);
     this.dataService.getData().subscribe((response) => {
       this.data = response.products;
       if (response && response.products) {
@@ -82,9 +84,6 @@ export class NavbarComponent implements OnInit, OnChanges {
   ///////////////////////////////////////////////////////////////////////////////\
   updateFilteredDatacategory() {
     this.filteredData['category'] = this.selectedCategories.slice(); // Create a copy
-    // this.filteredbrand = Array.from(
-    //   new Set(this.filteredcategory.map((product) => product.brand))
-    // );
   }
   updateFilteredDatabrand() {
     this.filteredData['brand'] = this.selectedcategorybrands.slice(); // Create a copy
@@ -95,7 +94,10 @@ export class NavbarComponent implements OnInit, OnChanges {
   updateFilteredDataprice() {
     this.filteredData['price'] = this.selectedPrices.slice(); // Create a copy
   }
-  //
+  updateSearch() {
+    this.filteredData['search'] = this.searchedvalue.slice();
+  }
+
   brandchange() {
     this.filteredcategory = this.data.filter((product) =>
       this.selectedCategories.includes(product.category)
@@ -113,6 +115,24 @@ export class NavbarComponent implements OnInit, OnChanges {
     // Update productdata for displaying filtered brands
     this.productdata = this.filteredbrand;
   }
+  //
+  //   updateFilteredData() {
+  //     this.filteredData = {
+  //       category: this.selectedCategories.slice(),
+  //       brand: this.selectedcategorybrands.slice(),
+  //       price: this.selectedPrices.slice(),
+  //       rating: this.selectedRatings.slice(),
+  //       search: [this.searchedvalue], // Update with current search term
+  //     };
+  //   }
+  //   //
+  onSearchChange(event: Event) {
+    const searchTerm = (event.target as HTMLInputElement).value;
+    this.searchedvalue = searchTerm; // Update search term
+    // this.updateFilteredData(); // Update filteredData with search term
+    this.filteredData['search'] = [this.searchedvalue];
+  }
+  // }
 }
 ///////
 ////////////////////////////////////////////////////////////////////////////////////

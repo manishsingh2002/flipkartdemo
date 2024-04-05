@@ -1,40 +1,48 @@
-<div class="hommebutton">
-  <button
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-    (click)="
-      [filtering(), togglehomepage(), sortingprices(), filteringrating()]
-    "
-  >
-    Search
-  </button>
-  <button
-    class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
-    (click)="resetsearch()"
-  >
-    Reset
-  </button>
-  <button
-    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-    (click)="togglechckoutpage()"
-  >
-    Checkout Page
-  </button>
-</div>
+<p-menubar>
+  <ng-template pTemplate="start">
+    <img src="../../assets/buddha.jpg" alt="Your Logo" height="40" />
+  </ng-template>
+  {{ filteredData | json }}
+  <div class="hommebutton">
+    <p-button
+      label="Search"
+      icon="pi pi-search"
+      iconPos="right"
+      (click)="
+        [filtering(), togglehomepage(), sortingprices(), filteringrating()]
+      "
+      class="mr-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    ></p-button>
 
+    <p-button
+      label="HomePage"
+      icon="pi pi-refresh"
+      iconPos="right"
+      (click)="resetsearch()"
+      class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+    ></p-button>
+
+    <p-button
+      label="Checkout Page"
+      icon="pi pi-shopping-cart"
+      iconPos="right"
+      (click)="togglechckoutpage()"
+      class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+    ></p-button>
+  </div>
+</p-menubar>
 <!--  -->
-{{ filteredData | json }}->
-<!--  -->
+
 <div *ngIf="togglecheckout">
-  <div *ngIf="toggle">
+  <div class="displayhomepage" *ngIf="toggle">
     <div
       class="card flex justify-content-center"
       *ngFor="let product of productdata"
     >
-      <p-card header=" {{ product.title }}" subheader="Card Subheader">
+      <p-card header="{{ product.title }}" subheader="Card Subheader">
         <ng-template pTemplate="header">
           <img alt="Card" [src]="product.images[0]" />
         </ng-template>
-        <h2>{{ product.final_price }}</h2>
         {{ product.rating }}
         <p>
           {{ product.description }}
@@ -44,164 +52,42 @@
           <p-button
             label="AddtoCart"
             icon="pi pi-check"
-            (click)="addTocart([product])"
+            (click)="addTocart(product)"
+          >
+          </p-button>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</div>
+
+<!--  -->
+<div *ngIf="togglecheckout">
+  <div *ngIf="filteredProducts.length > 0">
+    <div
+      class="card flex justify-content-center"
+      *ngFor="let product of filteredProducts"
+    >
+      <p-card header="{{ product.title }}" subheader="Card Subheader">
+        <ng-template pTemplate="header">
+          <img alt="Card" [src]="product.images[0]" />
+        </ng-template>
+        <h2>{{ product.title }}</h2>
+        {{ product.rating }}
+        <p>
+          {{ product.description }}
+        </p>
+        <span>&#8377;${{ product.price }}</span>
+        <ng-template pTemplate="footer">
+          <p-button
+            label="AddtoCart"
+            icon="pi pi-check"
+            (click)="addTocart(product)"
           ></p-button>
         </ng-template>
       </p-card>
     </div>
   </div>
 </div>
-<!--  -->
-<div *ngIf="togglecheckout">
-  <div
-    class="card flex justify-content-center"
-    *ngFor="let product of filteredProducts"
-  >
-    <p-card header="{{ product.title }}" subheader="Card Subheader">
-      <ng-template pTemplate="header">
-        <img alt="Card" [src]="product.images[0]" />
-      </ng-template>
-      <h2>{{ product.title }}</h2>
-      {{ product.rating }}
-      <p>
-        {{ product.description }}
-      </p>
-      <span>&#8377;${{ product.price }}</span>
-      <ng-template pTemplate="footer">
-        <p-button
-          label="AddtoCart"
-          icon="pi pi-check"
-          (click)="addTocart([product])"
-        ></p-button>
-      </ng-template>
-    </p-card>
-  </div>
-</div>
 
-<app-checkout *ngIf="checkout" [cart]="cartData"></app-checkout>
-
-<!--  -->
-<!-- 
-<div class="product-box" *ngIf="togglecheckout">
-  <div *ngFor="let product of productdata">
-    <div *ngIf="toggle">
-      <div *ngIf="filteredProducts.length > 0">
-      <div class="product-img-box">
-        <img title="realme c33" [src]="product.images[0]" />
-      </div>
-      <div class="product-details">
-        <h2>{{ product.title }}</h2>
-        <div class="rating-container">
-          <span class="rating-icon"
-            >{{ product.rating }}&nbsp;<i
-              class="fa fa-star"
-              aria-hidden="true"
-            ></i
-          ></span>
-        </div>
-        <ul>
-          <li>{{ product.description }}</li>
-
-          <li>
-            1 Year Manufacturer Warranty for Phone and 6 Months Warranty for
-            In-Box Accessories
-          </li>
-        </ul>
-      </div>
-      <div class="product-price">
-        <div class="price">
-          <span>${{ product.price }}</span>
-          <img [src]="product.images[1]" />
-        </div>
-        <div class="prev-price">
-          <span>&#8377; {{ product.final_price }}&nbsp;</span>
-          <span>&nbsp;{{ product.discountpercentage }}</span>
-        </div>
-        <a href="#" class="btn btn-primary" (click)="addTocart([product])"
-          >Add to Cart</a
-        > -->
-<!-- <a href="#" class="btn btn-primary" (click)="removeFromCart(product)"
-          >remove</a
-        > -->
-<!-- </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- -->
-<!-- <div class="product-box" *ngIf="togglecheckout">
-  <div *ngFor="let product of filteredProducts">
-    <div class="product-img-box">
-      <img title="{{ product.title }}" [src]="product.images[0]" />
-    </div>
-    <div class="product-details">
-      <h2>{{ product.title }}</h2>
-      <div class="rating-container">
-        <span class="rating-icon"
-          >{{ product.rating }}&nbsp;<i
-            class="fa fa-star"
-            aria-hidden="true"
-          ></i
-        ></span>
-      </div>
-      <ul>
-        <li>{{ product.description }}</li>
-        <li>
-          1 Year Manufacturer Warranty for Phone and 6 Months Warranty for
-          In-Box Accessories
-        </li>
-      </ul>
-    </div>
-    <div class="product-price">
-      <div class="price">
-        <span>&#8377;${{ product.price }}</span>
-        <img [src]="product.images[1]" />
-      </div>
-      <div class="prev-price"></div>
-      <a href="#" class="btn btn-primary" (click)="addTocart([product])"
-        >Add to Cart</a
-      >
-      <a href="#" class="btn btn-primary" (click)="removeFromCart(product)"
-        >remove</a
-      >
-    </div>
-  </div>
-</div>
-<!-- <div class="Centered" *ngIf="togglecheckout"> -->
-<!-- class="container" -->
-<!-- <div *ngFor="let product of productdata">
-    <div  class="card" style="width: 27rem; border-radius: 25px">
-      <img
-        style="width: 25rem; height: 20rem; border-radius: 25px"
-        class="card-img-top"
-        [src]="product.images[0]"
-        alt="Card image cap"
-      />
-      <div class="card-body">
-        <h2 class="card-title">
-          <strong>{{ product.title }}</strong>
-        </h2>
-        <p class="card-text">Price: ${{ product.price }}</p>
-        <p class="card-text">discounnt: ${{ product.discountPercentage }}</p>
-        <p>
-          <strong
-            >Final Price :
-            {{
-              product.price - product.price * (product.discountPercentage / 100)
-                | currency
-            }}</strong
-          >
-        </p>
-        <p class="card-text">` {{ product.description }}`</p>
-        <a href="#" class="btn btn-primary" (click)="addTocart([product])"
-          >Add to Cart</a
-        >
-        <a href="#" class="btn btn-primary" (click)="removeFromCart(product)"
-          >remove</a
-        >
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- </div> -->
+<app-checkout *ngIf="checkout" appTheme [cart]="cartData"></app-checkout>

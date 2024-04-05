@@ -8,17 +8,14 @@ import { DataService } from '../data.service';
 })
 export class HomepageComponent {
   @Input() filteredData: any;
-  toggle = true;
   productdata: any[] = [];
   filteredProducts: any[] = [];
   ascending: any[] = [];
   descending: any[] = [];
-  togglecheckout = true;
-  checkout = false;
 
-  constructor(private dataService: DataService) {}
-
-  ngOnInit() {
+  images: any[] | undefined;
+  allImageLinks: any[] = [];
+  constructor(private dataService: DataService) {
     this.dataService.getData().subscribe((response) => {
       if (response && response.products) {
         this.productdata = response.products;
@@ -42,25 +39,65 @@ export class HomepageComponent {
       }
     });
   }
+
+  ngOnInit() {
+    this.displayimages();
+    // Output: array containing all image links
+  }
+
+  // responsiveOptions: any[] = [
+  //   {
+  //     breakpoint: '1024px',
+  //     numVisible: 5,
+  //   },
+  //   {
+  //     breakpoint: '768px',
+  //     numVisible: 3,
+  //   },
+  //   {
+  //     breakpoint: '560px',
+  //     numVisible: 1,
+  //   },
+  // ];
+
   ///////////////////////////////////////////////////
+  togglecheckout = true;
+  checkout = false;
+  toggle = true;
+
   togglechckoutpage() {
     this.togglecheckout = !this.togglecheckout;
     this.checkout = !this.checkout;
     this.toggle = !this.toggle;
   }
 
+  displayimages() {
+    this.allImageLinks.push(
+      this.productdata.reduce((acc, product) => {
+        // Acc = accumulator, product = current object in the loop
+        return acc.concat(product.images || []); // Flatten arrays, include empty arrays
+      }, [])
+    );
+    console.log(this.allImageLinks);
+  }
   togglehomepage() {
     if (this.filteredProducts.length > 0) {
       this.toggle = false;
     } else {
       this.toggle = true;
     }
+
+    this.checkout = false;
   }
 
   resetsearch() {
-    window.location.reload();
+    // window.location.reload();
+
     this.filteredProducts.length = 0;
     this.toggle = true;
+    this.displayimages();
+    this.togglecheckout = true;
+    this.checkout;
   }
   //
   filteringrating() {
@@ -96,11 +133,18 @@ export class HomepageComponent {
       }
       this.filteredProducts = filteredResult;
     }
-    console.log(this.filteredProducts);
+    // console.log(this.filteredProducts);
   }
+
+  // searchfiltering() {
+
+  //   console.log(this.filteredProducts);
+  // }
+
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   filtering() {
     let filteredResult: any[] = [];
+
     if (
       this.filteredData.category.length > 0 &&
       this.filteredData.brand.length > 0
@@ -119,7 +163,7 @@ export class HomepageComponent {
       } else if (this.filteredData.price[0] === 'HighToLow') {
         filteredResult.sort((a, b) => b.price - a.price);
       } else {
-        filteredResult;
+        // filteredResult;
       }
     } else if (this.filteredData.brand.length > 0) {
       filteredResult.push(
@@ -134,21 +178,48 @@ export class HomepageComponent {
           return this.filteredData.category.includes(product.category);
         })
       );
-    } else {
+    } else if (this.filteredData.search.length > 0) {
+      // this.filteredData.category.length = 0;
+      // this.filteredData.brand.length = 0;
+      // this.filteredData.price.length = 0;
+      //
+
+      this.productdata.filter((product: any) => {
+        if (
+          this.filteredData.search[0]
+            .toLowerCase()
+            .includes(product.title.toLowerCase())
+        ) {
+          console.log('manish');
+          filteredResult.push(product);
+        }
+        console.log(filteredResult);
+      });
+    }
+    ///////////////
+    else {
       filteredResult.push(...this.productdata);
     }
+
     this.filteredProducts = filteredResult;
   }
   cartData: any[] = [];
+
   addTocart(product: any) {
-    product.forEach((ele: any) => {
-      const updatedProduct = { ...ele, quantity: 1, final_price: 0 };
+    const existingProduct = this.cartData.find(
+      (item) => item.id === product.id
+    );
+
+    if (!existingProduct) {
+      const updatedProduct = {
+        ...product,
+        quantity: 1,
+        final_price: product.price || 0,
+      };
       this.cartData.push(updatedProduct);
-    });
-    console.log('this.cartData', this.cartData);
-  }
-  removeFromCart(index: number) {
-    this.cartData.splice(index, 1);
-    console.log('this.cartData', this.cartData);
+      console.log('Product added to cart:', updatedProduct);
+    } else {
+      alert('Product already exists in cart:');
+    }
   }
 }

@@ -1,10 +1,27 @@
-<nav>
-  <!-- <p-image
-    class="img"
-    src="https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    alt="Image"
-  ></p-image> -->
-
+<nav appTheme>
+  <div class="card flex flex-wrap justify-content-center gap-3">
+    <span class="p-input-icon-right">
+      <i class="pi pi-spin pi-spinner"></i>
+      <input
+        type="text"
+        pInputText="search"
+        defaultLabel="Search"
+        [(ngModel)]="searchedvalue"
+        (input)="onSearchChange($event)"
+      />
+    </span>
+  </div>
+  <!-- <div class="card flex flex-wrap justify-content-center gap-3">
+    <span class="p-input-icon-right">
+      <i class="pi pi-spin pi-spinner"></i>
+      <input
+        type="text"
+        pInputText="search"
+        defaultLabel="Search"
+        [(ngModel)]="searchedvalue"
+      />
+    </span>
+  </div> -->
   <p-multiSelect
     [options]="category"
     [(ngModel)]="selectedCategories"
@@ -13,7 +30,7 @@
     defaultLabel="Select Categories"
     (onChange)="[updateFilteredDatacategory(), brandchange()]"
   ></p-multiSelect>
-  {{ selectedCategories }}
+
   <!-- brand -->
   <div *ngIf="filteredbrand.length === 0">
     <!-- <h2>Select Brand</h2> -->
@@ -61,91 +78,10 @@
       name="rating"
       defaultLabel="Select prices"
       (onChange)="updateFilteredDataprice()"
+      optionGroup="single"
     ></p-multiSelect>
   </div>
 </nav>
 <div class="footer">
   <app-homepage [filteredData]="filteredData"></app-homepage>
 </div>
-
-<!-- <div class="body">
-  <nav class="navbar">
-    <div class="categories">
-      <h2 (click)="togglecategory()">categories</h2>
-      <div *ngIf="togglecateegories">
-        <label *ngFor="let categories of category">
-          <input
-            type="checkbox"
-            name="categories"
-            value="{{ categories }}"
-            (change)="[onvalueChange($event), brandchange()]"
-          />
-          <p>{{ categories }}</p>
-        </label>
-      </div>
-    </div>
-    <br /> -->
-<!-- brand normal -->
-<!-- <div class="brand">
-      <h2 (click)="togglebrand()">brand</h2>
-      <div *ngIf="togglebrandings">
-        <div *ngIf="filteredbrand.length > 0">
-          <label *ngFor="let brand of filteredbrand">
-            <input
-              type="checkbox"
-              name="brand"
-              value="{{ brand }}"
-              (change)="onvalueChange($event)"
-            />
-            {{ brand }}
-          </label>
-        </div>
-        filtered brand
-        <div *ngIf="filteredbrand.length === 0">
-          <label *ngFor="let brand of brand">
-            <input
-              type="checkbox"
-              name="brand"
-              value="{{ brand }}"
-              (change)="onvalueChange($event)"
-            />{{ brand }}
-          </label>
-        </div>
-      </div>
-    </div> -->
-
-<!-- <div class="rating">
-      <h2 (click)="togglerating()">rating</h2>
-      <div *ngIf="toggleratings">
-        <label *ngFor="let rating of rating">
-          <input
-            type="checkbox"
-            name="rating"
-            value="{{ rating }}"
-            (change)="onvalueChange($event)"
-          />{{ rating }}
-        </label>
-      </div>
-    </div>
-    <br />
-
-    <div class="price">
-      <h2 (click)="toggleprice()">price</h2>
-      <div *ngIf="togglepricings">
-        <label *ngFor="let price of price">
-          <input
-            type="checkbox"
-            name="price"
-            value="{{ price }}"
-            (change)="onvalueChange($event)"
-          />
-          {{ price }}
-        </label>
-      </div>
-    </div>
-    <br />
-  </nav>
-
-</div> -->
-<!-- </nav>
-</div> -->

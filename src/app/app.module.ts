@@ -16,6 +16,11 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { ImageModule } from 'primeng/image';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { MenuItem } from 'primeng/api';
+import { GalleriaModule } from 'primeng/galleria';
+
+import { MenubarModule } from 'primeng/menubar';
+import { ThemeDirective } from './theme.directive';
 
 // import { SignupComponent } from './signup/signup.component';
 @NgModule({
@@ -24,10 +29,13 @@ import { ButtonModule } from 'primeng/button';
     HomepageComponent,
     NavbarComponent,
     CheckoutComponent,
+    ThemeDirective,
     // LoginComponent,
     // SignupComponent,
   ],
   imports: [
+    MenubarModule,
+    GalleriaModule,
     ButtonModule,
     CardModule,
     BrowserModule,
