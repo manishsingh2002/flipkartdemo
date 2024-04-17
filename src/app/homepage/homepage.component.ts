@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { DataService } from '../data.service';
 
 @Component({
@@ -6,59 +6,50 @@ import { DataService } from '../data.service';
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css'],
 })
-export class HomepageComponent {
-  @Input() filteredData: any;
+export class HomepageComponent implements OnChanges {
+  filteredData: any | undefined;
   productdata: any[] = [];
   filteredProducts: any[] = [];
   ascending: any[] = [];
   descending: any[] = [];
-
   images: any[] | undefined;
   allImageLinks: any[] = [];
+  //
+  // constructor
+  //
   constructor(private dataService: DataService) {
     this.dataService.getData().subscribe((response) => {
       if (response && response.products) {
         this.productdata = response.products;
-
         const ascendingData = this.productdata.slice();
         const descendingData = this.productdata.slice();
-
         this.ascending = ascendingData.sort((a, b) => {
           return a.price - b.price;
         });
-
         this.descending = descendingData.sort((a, b) => {
           return b.price - a.price;
         });
-
-        console.log('Original data:', this.productdata);
-        console.log('Sorted data (ascending):', this.ascending);
-        console.log('Sorted data (descending):', this.descending);
       } else {
         console.log('Error fetching data or no products in response');
       }
     });
+
+    this.dataService.navbardataEvent.subscribe((data) => {
+      this.filteredData = data;
+      console.log(data, typeof this.filteredData);
+    });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['filteredData']) {
+      console.log(changes);
+      this.filtering();
+    }
   }
 
   ngOnInit() {
     this.displayimages();
-    // Output: array containing all image links
   }
-
-  // responsiveOptions: any[] = [
-  //   {
-  //     breakpoint: '1024px',
-  //     numVisible: 5,
-  //   },
-  //   {
-  //     breakpoint: '768px',
-  //     numVisible: 3,
-  //   },
-  //   {
-  //     breakpoint: '560px',
-  //     numVisible: 1,
-  //   },
-  // ];
 
   ///////////////////////////////////////////////////
   togglecheckout = true;
@@ -78,7 +69,7 @@ export class HomepageComponent {
         return acc.concat(product.images || []); // Flatten arrays, include empty arrays
       }, [])
     );
-    console.log(this.allImageLinks);
+    // console.log(this.allImageLinks);
   }
   togglehomepage() {
     if (this.filteredProducts.length > 0) {
@@ -91,8 +82,6 @@ export class HomepageComponent {
   }
 
   resetsearch() {
-    // window.location.reload();
-
     this.filteredProducts.length = 0;
     this.toggle = true;
     this.displayimages();
@@ -109,6 +98,21 @@ export class HomepageComponent {
           if (this.filteredData.rating == '4-5') {
             return this.filteredData.rating.includes(
               String(product.rating > 5)
+            );
+          }
+          if (this.filteredData.rating == '0-1') {
+            return this.filteredData.rating.includes(
+              String(product.rating >= 0 && product.rating <= 1)
+            );
+          }
+          if (this.filteredData.rating == '1-3') {
+            return this.filteredData.rating.includes(
+              String(product.rating >= 1 && product.rating <= 3)
+            );
+          }
+          if (this.filteredData.rating == '3-4') {
+            return this.filteredData.rating.includes(
+              String(product.rating >= 3 && product.rating <= 4)
             );
           }
         })
@@ -135,11 +139,6 @@ export class HomepageComponent {
     }
     // console.log(this.filteredProducts);
   }
-
-  // searchfiltering() {
-
-  //   console.log(this.filteredProducts);
-  // }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   filtering() {
@@ -179,11 +178,6 @@ export class HomepageComponent {
         })
       );
     } else if (this.filteredData.search.length > 0) {
-      // this.filteredData.category.length = 0;
-      // this.filteredData.brand.length = 0;
-      // this.filteredData.price.length = 0;
-      //
-
       this.productdata.filter((product: any) => {
         if (
           this.filteredData.search[0]
@@ -195,9 +189,7 @@ export class HomepageComponent {
         }
         console.log(filteredResult);
       });
-    }
-    ///////////////
-    else {
+    } else {
       filteredResult.push(...this.productdata);
     }
 
@@ -209,17 +201,18 @@ export class HomepageComponent {
     const existingProduct = this.cartData.find(
       (item) => item.id === product.id
     );
-
     if (!existingProduct) {
       const updatedProduct = {
         ...product,
-        quantity: 1,
+        quantity: 0,
         final_price: product.price || 0,
       };
       this.cartData.push(updatedProduct);
-      console.log('Product added to cart:', updatedProduct);
+      // console.log('Product added to cart:', updatedProduct);
     } else {
       alert('Product already exists in cart:');
     }
+    this.dataService.cartDatas(this.cartData);
+    // console.log(typeof this.cartData);
   }
 }

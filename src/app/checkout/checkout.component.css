@@ -1,11 +1,17 @@
 .description {
-  padding: 20px;
+  padding: 40px;
+
   background-color: rgba(255, 255, 255, 0.9);
 }
 .title {
   font-size: 24px;
+  border-radius: 25%;
+  width: 500px;
+  margin-left: 400px;
+  align-items: center;
   font-weight: bold;
 }
+
 .price {
   font-size: 18px;
   color: #333;
@@ -74,6 +80,7 @@ body {
 }
 
 .wrapper {
+  padding: 60px 60px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);

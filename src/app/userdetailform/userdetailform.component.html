@@ -1,0 +1,150 @@
+<form [formGroup]="Signupform" (ngSubmit)="loginUser()">
+  <span *ngIf="username && username.invalid && username.touched"
+    >please enter the valid name</span
+  >
+  <input
+    placeholder="username"
+    type="text"
+    formControlName="username"
+  /><br /><br />
+
+  <span *ngIf="email && email.invalid && email.touched"
+    >please enter the valid Email</span
+  >
+  <input placeholder="email" type="text" formControlName="email" /><br /><br />
+  <span *ngIf="address && address.invalid && address.touched"
+    >please enter the valid address</span
+  >
+  <input
+    placeholder="address"
+    type="text"
+    formControlName="address"
+  /><br /><br />
+  <span *ngIf="city && city.invalid && city.touched"
+    >please enter the valid city</span
+  >
+  <input placeholder="city" type="text" formControlName="city" /><br /><br />
+
+  <span *ngIf="pincode && pincode.invalid && pincode.touched"
+    >please enter the valid pincode</span
+  >
+  <input
+    placeholder="pincode"
+    type="text"
+    formControlName="pincode"
+  /><br /><br />
+  <span *ngIf="password && password.invalid && password.touched"
+    >please enter the valid passsword</span
+  >
+  <input
+    placeholder="password"
+    type="text"
+    formControlName="password"
+  /><br /><br />
+
+  <br /><br /><button [disabled]="email?.invalid">login</button>
+</form>
+
+<app-deliver-page></app-deliver-page>
+<!-- <p>Userdetail form works!</p>
+
+<form
+  [formGroup]="Signupform"
+  (ngSubmit)="loginUser()"
+  class="user-detail-form flex flex-col gap-3 mx-auto max-w-md bg-gray-100 shadow-md rounded-md p-4"
+>
+  <div class="form-group flex flex-col">
+    <label for="name" class="text-sm font-medium mb-1">Name</label>
+    <input
+      type="text"
+      id="name"
+      formControlName="username"
+      placeholder="Name"
+      name="usernames"
+      class="form-control rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+    />
+  </div>
+  <div class="form-group flex flex-col">
+    <label for="email" class="text-sm font-medium mb-1">Email</label>
+    <input
+      type="email"
+      id="email"
+      formControlName="email"
+      name="email"
+      placeholder="Email"
+      class="form-control rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+    />
+  </div>
+  <div class="form-group flex flex-col">
+    <label for="address" class="text-sm font-medium mb-1">Address</label>
+    <input
+      formControlName="address"
+      id="address"
+      name="address"
+      placeholder="Address"
+      class="form-control rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+      rows="3"
+    />
+  </div>
+  <div class="form-group flex flex-col">
+    <label for="city" class="text-sm font-medium mb-1">City</label>
+    <input
+      placeholder="city"
+      formControlName="city"
+      type="text"
+      id="city"
+      name="city"
+      class="form-control rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+    />
+  </div>
+  <div class="form-group flex flex-col">
+    <label for="pincode" class="text-sm font-medium mb-1">Pincode</label>
+    <input
+      type="text"
+      placeholder="Pincode"
+      id="pincode"
+      name="pincode"
+      formControlName="pincode"
+      class="form-control rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+    />
+  </div>
+  <div class="form-group flex flex-col">
+    <label for="password" class="text-sm font-medium mb-1">Password</label>
+    <input
+      placeholder="password"
+      type="password"
+      id="password"
+      formControlName="password"
+      name="password"
+      class="form-control rounded-md border border-gray-300 p-2 focus:outline-none focus:ring-1 focus:ring-blue-500"
+    />
+  </div>
+  <div class="form-group flex items-center justify-end">
+    <button
+      type="button"
+      (click)="loginUser()"
+      class="btn btn-primary rounded-md px-4 py-2 text-center text-white"
+    >
+      Check
+    </button>
+  </div>
+</form> -->
+
+<!-- 
+
+<p-card
+  *ngFor="let shippedproduct of shippeddata"
+  header="Advanced Card"
+  subheader="Card Subheader"
+  [style]="{ width: '360px' }"
+>
+  <ng-template pTemplate="header">
+    <img alt="Card" src="../../assets/buddha.jpg" />
+  </ng-template>
+  <p>
+    thankyou for purchasing {{ shippedproduct[0].title }}and
+    {{ shippedproduct[1].title }} we will shortly dispach the product to your
+    address {{ formdata.address }} Mr/Ms {{ formdata.name }}
+  </p>
+  <ng-template pTemplate="footer"> </ng-template>
+</p-card> -->

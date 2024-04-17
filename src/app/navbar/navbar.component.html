@@ -5,7 +5,7 @@
       <input
         type="text"
         pInputText="search"
-        defaultLabel="Search"
+        placeholder="Search product"
         [(ngModel)]="searchedvalue"
         (input)="onSearchChange($event)"
       />
@@ -17,17 +17,17 @@
       <input
         type="text"
         pInputText="search"
-        defaultLabel="Search"
+        pllaceholder="Search"
         [(ngModel)]="searchedvalue"
       />
-    </span>
+    </span>   
   </div> -->
   <p-multiSelect
     [options]="category"
     [(ngModel)]="selectedCategories"
     optionLabel=""
     name="categories"
-    defaultLabel="Select Categories"
+    placeholder="Select Categories"
     (onChange)="[updateFilteredDatacategory(), brandchange()]"
   ></p-multiSelect>
 
@@ -39,7 +39,7 @@
       [(ngModel)]="selectedcategorybrands"
       optionLabel=""
       name="brands"
-      defaultLabel="Select brands"
+      placeholder="Select brands"
       (onChange)="updateFilteredDatabrand()"
     ></p-multiSelect>
   </div>
@@ -51,23 +51,22 @@
       [(ngModel)]="selectedcategorybrands"
       optionLabel=""
       name="brands"
-      defaultLabel="Select brands"
+      placeholder="Select brands"
       (onChange)="updateFilteredDatabrand()"
     ></p-multiSelect>
   </div>
   <!--  -->
   <!--  -->
-  <div>
-    <!-- <h2>Select rating</h2> -->
+  <!-- <div>
     <p-multiSelect
       [options]="rating"
       [(ngModel)]="selectedRatings"
       optionLabel=""
       name="rating"
-      defaultLabel="Select ratings"
+      placeholder="Select ratings"
       (onChange)="updateFilteredDatarating()"
     ></p-multiSelect>
-  </div>
+  </div> -->
   <!--  -->
   <div>
     <!-- <h2>Select price</h2> -->
@@ -76,12 +75,15 @@
       [(ngModel)]="selectedPrices"
       optionLabel=""
       name="rating"
-      defaultLabel="Select prices"
+      placeholder="Select prices"
       (onChange)="updateFilteredDataprice()"
       optionGroup="single"
     ></p-multiSelect>
   </div>
+
+  <button (click)="reset()">Reset search</button>
 </nav>
 <div class="footer">
-  <app-homepage [filteredData]="filteredData"></app-homepage>
+  <app-homepage></app-homepage>
 </div>
+<!-- [filteredData]="filteredData" -->

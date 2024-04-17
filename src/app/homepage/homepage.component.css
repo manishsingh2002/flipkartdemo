@@ -1,15 +1,13 @@
 .card {
   /* Set a fixed width for each card */
   margin: 1rem; /* Add some margin for spacing */
+
   display: inline-block; /* Allow cards to sit side-by-side */
 }
 
 .card img {
-  /* Set image width to 100% of card width */
   width: 100%;
-  /* Set image height to 400px */
   height: 400px;
-  /* Maintain aspect ratio if needed (optional) */
   object-fit: cover; /* Or 'contain' depending on your preference */
 }
 

@@ -41,6 +41,7 @@ export class NavbarComponent implements OnInit, OnChanges {
   selectedBrands: string[] = [];
   selectedPrices: any = [];
   searchedvalue: string = ''; // Initialize with an empty string
+  //
   filteredData: { [key: string]: string | string[] | number[] } = {
     category: [], // Initialize the 'category' key with an empty array
     brand: [],
@@ -49,14 +50,6 @@ export class NavbarComponent implements OnInit, OnChanges {
     search: [],
   };
 
-  // Function to update filteredData when selections change
-
-  //
-  //
-  //
-  // /
-  //
-  //
   constructor(private dataService: DataService) {}
 
   ngOnChanges(selectedCategories: any): void {
@@ -83,19 +76,34 @@ export class NavbarComponent implements OnInit, OnChanges {
   }
   ///////////////////////////////////////////////////////////////////////////////\
   updateFilteredDatacategory() {
-    this.filteredData['category'] = this.selectedCategories.slice(); // Create a copy
+    this.filteredData['category'] = this.selectedCategories.slice();
+    this.dataService.navbarData(this.filteredData);
+    // Create a copy
   }
+
   updateFilteredDatabrand() {
     this.filteredData['brand'] = this.selectedcategorybrands.slice(); // Create a copy
+    this.dataService.navbarData(this.filteredData);
   }
+
   updateFilteredDatarating() {
     this.filteredData['rating'] = this.selectedRatings.slice(); // Create a copy
+    this.dataService.navbarData(this.filteredData);
   }
+
   updateFilteredDataprice() {
     this.filteredData['price'] = this.selectedPrices.slice(); // Create a copy
+    this.dataService.navbarData(this.filteredData);
   }
   updateSearch() {
     this.filteredData['search'] = this.searchedvalue.slice();
+    this.dataService.navbarData(this.filteredData);
+  }
+  reset() {
+    this.searchedvalue = '';
+    this.selectedCategories = [];
+    this.selectedcategorybrands = [];
+    this.selectedPrices = []; // Assuming 'price' options have single selection
   }
 
   brandchange() {

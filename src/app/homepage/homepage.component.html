@@ -34,8 +34,11 @@
 <!--  -->
 
 <div *ngIf="togglecheckout">
+  <!-- <div class="displayhomepage" *ngIf="toggle"> -->
+
   <div class="displayhomepage" *ngIf="toggle">
     <div
+      [appBodercolor]="'purple'"
       class="card flex justify-content-center"
       *ngFor="let product of productdata"
     >
@@ -43,11 +46,15 @@
         <ng-template pTemplate="header">
           <img alt="Card" [src]="product.images[0]" />
         </ng-template>
-        {{ product.rating }}
-        <p>
+        <p appBodercolor>
+          {{ product.rating }}
+        </p>
+        <p appHovercolor [highightColors]="'purple'">
           {{ product.description }}
         </p>
-        <span>&#8377;${{ product.price }}</span>
+        <span appHovercolor [highightColors]="'purple'">{{
+          product.price | currency : "INR"
+        }}</span>
         <ng-template pTemplate="footer">
           <p-button
             label="AddtoCart"
@@ -80,6 +87,7 @@
         <span>&#8377;${{ product.price }}</span>
         <ng-template pTemplate="footer">
           <p-button
+            appHover
             label="AddtoCart"
             icon="pi pi-check"
             (click)="addTocart(product)"
@@ -90,4 +98,5 @@
   </div>
 </div>
 
-<app-checkout *ngIf="checkout" appTheme [cart]="cartData"></app-checkout>
+<app-checkout *ngIf="checkout" appTheme></app-checkout>
+<!-- [cart]="cartData" -->
