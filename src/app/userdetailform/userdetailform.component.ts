@@ -51,12 +51,6 @@ export class UserdetailformComponent implements OnInit {
   ngOnInit() {
     this.formdata = this.Signupform.value;
     console.log(this.formdata);
-
-    // this.valueChangesSubscription = this.Signupform.valueChanges.subscribe(
-    //   (data) => {
-    //     console.log('Form values changed:', data);
-    //   }
-    // );
   }
   //
   get username() {

@@ -1,4 +1,4 @@
-<nav appTheme>
+<nav routerLink="" appTheme>
   <div class="card flex flex-wrap justify-content-center gap-3">
     <span class="p-input-icon-right">
       <i class="pi pi-spin pi-spinner"></i>
@@ -55,19 +55,7 @@
       (onChange)="updateFilteredDatabrand()"
     ></p-multiSelect>
   </div>
-  <!--  -->
-  <!--  -->
-  <!-- <div>
-    <p-multiSelect
-      [options]="rating"
-      [(ngModel)]="selectedRatings"
-      optionLabel=""
-      name="rating"
-      placeholder="Select ratings"
-      (onChange)="updateFilteredDatarating()"
-    ></p-multiSelect>
-  </div> -->
-  <!--  -->
+
   <div>
     <!-- <h2>Select price</h2> -->
     <p-multiSelect
@@ -83,7 +71,5 @@
 
   <button (click)="reset()">Reset search</button>
 </nav>
-<div class="footer">
-  <app-homepage></app-homepage>
-</div>
-<!-- [filteredData]="filteredData" -->
+
+<router-outlet></router-outlet>

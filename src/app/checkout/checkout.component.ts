@@ -75,10 +75,6 @@ export class CheckoutComponent implements OnInit {
   }
   // /////////////////////////////////////////////////
   product() {
-    // this.cart.forEach((product: any) => {
-    //   this.products = this.cart;
-    //   console.log(this.products, 'kkkkkkkkkkk');
-    // });
     this.products = this.cart;
     this.finalPrice = 0;
 

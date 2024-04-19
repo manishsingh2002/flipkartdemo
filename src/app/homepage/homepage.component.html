@@ -26,6 +26,7 @@
       label="Checkout Page"
       icon="pi pi-shopping-cart"
       iconPos="right"
+      routerLink="checkout"
       (click)="togglechckoutpage()"
       class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
     ></p-button>
@@ -34,8 +35,6 @@
 <!--  -->
 
 <div *ngIf="togglecheckout">
-  <!-- <div class="displayhomepage" *ngIf="toggle"> -->
-
   <div class="displayhomepage" *ngIf="toggle">
     <div
       [appBodercolor]="'purple'"
@@ -98,5 +97,5 @@
   </div>
 </div>
 
-<app-checkout *ngIf="checkout" appTheme></app-checkout>
-<!-- [cart]="cartData" -->
+<!-- <app-checkout *ngIf="checkout" appTheme></app-checkout> -->
+<router-outlet></router-outlet>

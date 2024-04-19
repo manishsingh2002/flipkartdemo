@@ -50,15 +50,19 @@ export class DataService {
     return this.finalrate;
   }
 
-  userInfo: any;
+  // @Output() userdetailevent = new EventEmitter<any>();
+
+  userInfo: any = [];
   userdata(DATA: any) {
     this.userInfo = DATA;
-  }
-  user(user: any) {
-    throw new Error('Method not implemented.');
+    console.log('us', this.userInfo);
+    // this.userdetailevent.emit(DATA);
+    console.log(this.userInfo, 'aaaaaaaaaaaaaa');
+    // this.getuserdata();
   }
 
-  setUserInfo() {
+  getuserdata() {
+    console.log(this.userInfo, 'llllllllllllll');
     return this.userInfo;
   }
 }

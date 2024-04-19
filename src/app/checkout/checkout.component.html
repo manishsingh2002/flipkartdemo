@@ -1,115 +1,115 @@
 <!--  -->
-
-<body *ngFor="let product of cart; let i = index">
-  <div class="wrapper" *ngIf="toggleproduct">
-    <!-- Replace with dynamic image data -->
-    <div class="item1 image-item">
-      <img src="{{ product.images[i] }}" alt="Image 1" />
-    </div>
-    <div class="item2 image-item">
-      <img src="{{ product.images[i + 1] }}" alt="Image 2" />
-    </div>
-    <div class="item3 image-item">
-      <img src="{{ product.images[i + 2] }}" alt="Image 3" />
-    </div>
-    <div class="item4 image-item">
-      <img src="{{ product.images[i + 3] }}" alt="Image 4" />
-    </div>
-  </div>
-
-  <div class="description" *ngIf="toggleproduct">
-    <!-- Replace with dynamic product data -->
-    <div class="title" appTheme>
-      {{ product.title }}<br />
-      price: ${{ product.price }} <br />
-      discount :{{ product.discountPercentage }} <br />
-      final price:{{ product.final_price }}
+<main>
+  <body *ngFor="let product of cart; let i = index">
+    <div class="wrapper" *ngIf="toggleproduct">
+      <!-- Replace with dynamic image data -->
+      <div class="item1 image-item">
+        <img src="{{ product.images[i] }}" alt="Image 1" />
+      </div>
+      <div class="item2 image-item">
+        <img src="{{ product.images[i + 1] }}" alt="Image 2" />
+      </div>
+      <div class="item3 image-item">
+        <img src="{{ product.images[i + 2] }}" alt="Image 3" />
+      </div>
+      <div class="item4 image-item">
+        <img src="{{ product.images[i + 3] }}" alt="Image 4" />
+      </div>
     </div>
 
-    <!-- <div class="price">final price:{{ product.final_price }}</div> -->
-    <div class="buttons">
-      <a>
-        {{ product.quantity }}
-      </a>
-      <a href="#" class="button" (click)="counteradd(product)">+</a>
-      <a href="#" class="button" (click)="countersub(product)">-</a>
-      <a href="#" class="button" (click)="remove(product)">cancel Ordere</a>
-    </div>
-  </div>
-</body>
-<!-- final page -->
-<p-button
-  label="Checkout "
-  (click)="togglefinalcheckout()"
-  [rounded]="true"
-  severity="success"
-></p-button>
-<!--  -->
-<div class="finalizecart" *ngIf="togglecheckoutproduct">
-  <div class="card">
-    <p-table [value]="products" [tableStyle]="{ 'min-width': '60rem' }">
-      <ng-template pTemplate="caption">
-        <div class="flex align-items-center justify-content-between">
-          Products
-          <p-button icon="pi pi-refresh"></p-button>
-        </div>
-      </ng-template>
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Name</th>
-          <th>Image</th>
-          <th>Price</th>
-          <th>Category</th>
-          <th>rating</th>
-          <th>Quantity</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-product>
-        <tr>
-          <td>
-            <strong>{{ product.title }}</strong>
-          </td>
-          <td>
-            <img
-              [src]="product.images[0]"
-              [alt]="product.title"
-              width="100"
-              class="shadow-4"
-            />
-          </td>
-          <td>
-            <strong>{{ product.final_price | currency : "USD" }}</strong>
-          </td>
-          <td>
-            <strong>{{ product.category }}</strong>
-          </td>
-          <td>
-            <strong>{{ product.rating }}</strong>
-          </td>
+    <div class="description" *ngIf="toggleproduct">
+      <!-- Replace with dynamic product data -->
+      <!-- <div class="title" appTheme>
+        {{ product.title }}<br />
+        price: ${{ product.price }} <br />
+        discount :{{ product.discountPercentage }} <br />
+        final price:{{ product.final_price }}
+      </div> -->
 
-          <td>
-            <strong>{{ product.quantity }}</strong>
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </div>
-  <div style="align-items: center; display: inline-flex">
-    <h2>FinalPrice :</h2>
-    <h2>
-      <Strong>{{ finalPrice | currency : "USD" }}</Strong>
-    </h2>
-  </div>
-  <br />
-  <p-button
-    label="payment "
-    (click)="toggleuserdetailform()"
+      <!-- <div class="price">final price:{{ product.final_price }}</div> -->
+      <div class="buttons">
+        <a>
+          {{ product.quantity }}
+        </a>
+        <a class="button" type="button" (click)="counteradd(product)">+</a>
+        <a class="button" type="button" (click)="countersub(product)">-</a>
+        <a href="#" class="button" (click)="remove(product)">cancel Ordere</a>
+      </div>
+    </div>
+  </body>
+  <!-- final page -->
+  <!-- <p-button
+    label="Checkout "
+    (click)="togglefinalcheckout()"
     [rounded]="true"
     severity="success"
-  >
-  </p-button>
-</div>
+  ></p-button> -->
+  <!--  -->
+  <div class="finalizecart">
+    <!-- <div class="finalizecart" *ngIf="togglecheckoutproduct"> -->
 
-<div *ngIf="toggleuserinputform">
-  <app-userdetailform></app-userdetailform>
-</div>
+    <div class="card">
+      <p-table [value]="products" [tableStyle]="{ 'min-width': '60rem' }">
+        <ng-template pTemplate="caption">
+          <div class="flex align-items-center justify-content-between">
+            Products
+            <p-button icon="pi pi-refresh"></p-button>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>rating</th>
+            <th>Quantity</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td>
+              <strong>{{ product.title }}</strong>
+            </td>
+            <td>
+              <img
+                [src]="product.images[0]"
+                [alt]="product.title"
+                width="100"
+                class="shadow-4"
+              />
+            </td>
+            <td>
+              <strong>{{ product.final_price | currency : "USD" }}</strong>
+            </td>
+            <td>
+              <strong>{{ product.category }}</strong>
+            </td>
+            <td>
+              <strong>{{ product.rating }}</strong>
+            </td>
+
+            <td>
+              <strong>{{ product.quantity }}</strong>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div style="align-items: center; display: inline-flex">
+      <h2>FinalPrice :</h2>
+      <h2>
+        <Strong>{{ finalPrice | currency : "USD" }}</Strong>
+      </h2>
+    </div>
+    <br />
+  </div>
+</main>
+<p-button
+  label="Payment Page"
+  icon="pi pi-shopping-cart"
+  iconPos="right"
+  routerLink="userdetails"
+  class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+></p-button>
+<router-outlet></router-outlet>
