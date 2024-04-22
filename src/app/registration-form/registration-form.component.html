@@ -1,0 +1,35 @@
+<h1 style="background-color: aqua; font-weight: 800">
+  registration-form works!
+</h1>
+<form [formGroup]="RegistrationForm" (ngSubmit)="registerUser()">
+  <div class="field col-12 md:col-6">
+    <label htmlFor="email">Email</label>
+    <input pInputText type="text" placeholder="email" formControlName="email" />
+  </div>
+
+  <div class="field col-12 md:col-6">
+    <label htmlFor="lastname2">Password</label>
+    <input
+      pInputText
+      placeholder="password"
+      type="text"
+      formControlName="password"
+    />
+    <br />
+    <button
+      pButton
+      pRipple
+      label="Register User"
+      routerLink="loginuser"
+      class="p-button-success"
+    ></button>
+    <button
+      pButton
+      pRipple
+      label="Reset"
+      severity="warning"
+      (click)="resetUser()"
+    ></button>
+  </div>
+</form>
+<router-outlet></router-outlet>

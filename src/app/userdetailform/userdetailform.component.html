@@ -1,52 +1,110 @@
-<form [formGroup]="Signupform" (ngSubmit)="loginUser()">
-  <span *ngIf="username && username.invalid && username.touched"
-    >please enter the valid name</span
-  >
-  <input
-    placeholder="username"
-    type="text"
-    formControlName="username"
-  /><br /><br />
+<!-- <form> -->
+<h1 style="background-color: aqua; font-weight: 800">
+  User Detaail Page For Delivery
+</h1>
+<div class="col-12" [formGroup]="Signupform" (ngSubmit)="loginUser()">
+  <div class="card">
+    <h5>User Details</h5>
+    <div class="p-fluid p-formgrid grid">
+      <span *ngIf="username && username.invalid && username.touched"
+        >please enter the valid name</span
+      >
+      <div class="field col-12 md:col-6">
+        <label htmlFor="firstname2">User Name</label>
+        <input
+          pInputText
+          id="firstname2"
+          type="text"
+          placeholder="username"
+          type="text"
+          formControlName="username"
+        />
+      </div>
+      <!-- Email -->
+      <span *ngIf="email && email.invalid && email.touched"
+        >please enter the valid Email</span
+      >
+      <div class="field col-12 md:col-6">
+        <label htmlFor="lastname2">Email</label>
+        <input
+          pInputText
+          id="Email"
+          type="text"
+          placeholder="email"
+          formControlName="email"
+        />
+      </div>
+      <!--  Address-->
+      <span *ngIf="address && address.invalid && address.touched"
+        >please enter the valid address</span
+      >
+      <div class="field col-12">
+        <label htmlFor="address">Address</label>
+        <input
+          pInputTextarea
+          id="address"
+          rows="4"
+          placeholder="address"
+          type="text"
+          formControlName="address"
+        />
+      </div>
+      <!-- City -->
+      <span *ngIf="city && city.invalid && city.touched"
+        >please enter the valid city</span
+      >
+      <div class="field col-12 md:col-6">
+        <label htmlFor="city">City</label>
+        <input
+          pInputText
+          id="city"
+          type="text"
+          placeholder="city"
+          type="text"
+          formControlName="city"
+        />
+      </div>
+      <!-- zip code  -->
+      <span *ngIf="pincode && pincode.invalid && pincode.touched"
+        >please enter the valid pincode</span
+      >
+      <div class="field col-12 md:col-3">
+        <label htmlFor="zip">Zip</label>
+        <input
+          pInputText
+          id="zip"
+          type="text"
+          placeholder="pincode"
+          type="text"
+          formControlName="pincode"
+        />
+      </div>
+      <!-- password -->
+      <span *ngIf="password && password.invalid && password.touched"
+        >please enter the valid passsword</span
+      >
+      <div class="field col-12 md:col-6">
+        <label htmlFor="lastname2">Email</label>
+        <input
+          pInputText
+          id="password"
+          placeholder="password"
+          type="text"
+          formControlName="password"
+        />
+      </div>
+      <button
+        routerLink="delivery"
+        pButton
+        pRipple
+        label="Submit"
+        class="p-button-success"
+      ></button>
 
-  <span *ngIf="email && email.invalid && email.touched"
-    >please enter the valid Email</span
-  >
-  <input placeholder="email" type="text" formControlName="email" /><br /><br />
-  <span *ngIf="address && address.invalid && address.touched"
-    >please enter the valid address</span
-  >
-  <input
-    placeholder="address"
-    type="text"
-    formControlName="address"
-  /><br /><br />
-  <span *ngIf="city && city.invalid && city.touched"
-    >please enter the valid city</span
-  >
-  <input placeholder="city" type="text" formControlName="city" /><br /><br />
+      <!-- <a href="del" type="button">manish</a> -->
+    </div>
+  </div>
+</div>
+<!-- <button routerLink="log">lOogin</button> -->
 
-  <span *ngIf="pincode && pincode.invalid && pincode.touched"
-    >please enter the valid pincode</span
-  >
-  <input
-    placeholder="pincode"
-    type="text"
-    formControlName="pincode"
-  /><br /><br />
-  <span *ngIf="password && password.invalid && password.touched"
-    >please enter the valid passsword</span
-  >
-  <input
-    placeholder="password"
-    type="text"
-    formControlName="password"
-  /><br /><br />
-  <br /><br />
-  <button routerLink="del">
-    <!-- <br /><br /><button [disabled]="email?.invalid" routerLink="delivery"> -->
-    login
-  </button>
-</form>
-
-<!-- <p>Userdetail form works!</p>-->
 <router-outlet></router-outlet>

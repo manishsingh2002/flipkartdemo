@@ -25,8 +25,23 @@ import { TableModule } from 'primeng/table';
 import { BodercolorDirective } from './directives/bordercolor/bodercolor.directive';
 import { UnlessDirective } from './directives/st-unless/unless.directive';
 import { FormValidationDirective } from './directives/st-formsvalidator/form-validation.directive';
-// import { ChildComponent } from './Components/child/child.component';
+import { InputTextModule } from 'primeng/inputtext';
 import { DeliverPageComponent } from './Components/deliver-page/deliver-page.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
+//
+import { CommonModule } from '@angular/common';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { CalendarModule } from 'primeng/calendar';
+import { ChipsModule } from 'primeng/chips';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { CascadeSelectModule } from 'primeng/cascadeselect';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { RegistrationFormComponent } from './registration-form/registration-form.component';
+//
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,10 +54,13 @@ import { DeliverPageComponent } from './Components/deliver-page/deliver-page.com
     BodercolorDirective,
     UnlessDirective,
     FormValidationDirective,
-
     DeliverPageComponent,
+    LandingpageComponent,
+    LoginFormComponent,
+    RegistrationFormComponent,
   ],
   imports: [
+    InputTextModule,
     TableModule,
     MenubarModule,
     GalleriaModule,
@@ -58,6 +76,15 @@ import { DeliverPageComponent } from './Components/deliver-page/deliver-page.com
     SlickCarouselModule,
     MultiSelectModule,
     ImageModule,
+    CommonModule,
+    AutoCompleteModule,
+    CalendarModule,
+    ChipsModule,
+    DropdownModule,
+    InputMaskModule,
+    InputNumberModule,
+    CascadeSelectModule,
+    InputTextareaModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

@@ -1,0 +1,44 @@
+<h1 style="background-color: aqua; font-weight: 800">Login Form</h1>
+<button routerLink="userdetail">Signup</button>
+
+<form [formGroup]="LoginForm" (ngSubmit)="loginUser()">
+  <div class="field col-12 md:col-6">
+    <label htmlFor="lastname2">Email</label>
+    <input
+      pInputText
+      id="Email"
+      type="text"
+      placeholder="email"
+      formControlName="email"
+    />
+  </div>
+
+  <div class="field col-12 md:col-6">
+    <label htmlFor="lastname2">Password</label>
+    <input
+      pInputText
+      id="password"
+      placeholder="password"
+      type="text"
+      formControlName="password"
+    />
+    <br />
+
+    <button
+      pButton
+      pRipple
+      label="Login"
+      class="p-button-success"
+      routerLink="userdetail"
+    ></button>
+
+    <button
+      pButton
+      pRipple
+      label="Reset"
+      severity="warning"
+      (click)="resetUser()"
+    ></button>
+  </div>
+</form>
+<router-outlet></router-outlet>
