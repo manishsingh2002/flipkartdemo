@@ -1,5 +1,5 @@
-<h1 style="background-color: aqua; font-weight: 800">Login Form</h1>
-<button routerLink="userdetail">Signup</button>
+<!-- <h1 style="background-color: aqua; font-weight: 800">Login Form</h1>
+<button routerLink="/register">Signup</button>
 
 <form [formGroup]="LoginForm" (ngSubmit)="loginUser()">
   <div class="field col-12 md:col-6">
@@ -29,7 +29,7 @@
       pRipple
       label="Login"
       class="p-button-success"
-      routerLink="userdetail"
+      routerLink="/userdetails"
     ></button>
 
     <button
@@ -40,5 +40,90 @@
       (click)="resetUser()"
     ></button>
   </div>
-</form>
-<router-outlet></router-outlet>
+</form> -->
+<!-- <router-outlet></router-outlet> -->
+
+<div class="container">
+  <h1>Login Here</h1>
+  <form [formGroup]="LoginForm" (ngSubmit)="loginUser()">
+    <div class="email">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" />
+      <div *ngIf="LoginForm?.invalid && LoginForm?.get('email').touched">
+        <small *ngIf="LoginForm?.get('email').errors?.required"
+          >Email is required.</small
+        >
+        <small
+          *ngIf="
+            !LoginForm?.get('email').errors?.required &&
+            LoginForm?.get('email').errors?.email
+          "
+          >Invalid email format.</small
+        >
+      </div>
+    </div>
+
+    <div class="password">
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" />
+    </div>
+    <div class="routerpage">
+      <div>
+        <label label="Reset" severity="warning" (click)="resetUser()"
+          >Reset</label
+        >
+      </div>
+      <div>
+        <label style="color: rgb(227, 252, 0)" routerLink="/register"
+          >Dont Have Account,Signup</label
+        >
+      </div>
+    </div>
+
+    <button type="submit" routerLink="/userdetails">Login</button>
+  </form>
+</div>
+
+<!-- <h1 class="login-title">Login Form</h1>
+<button routerLink="/register">Signup</button>
+
+<form [formGroup]="LoginForm" (ngSubmit)="loginUser()">
+  <div class="field col-12 md:col-6">
+    <label for="lastname2">Email</label>
+    <input
+      pInputText
+      id="Email"
+      type="text"
+      placeholder="email"
+      formControlName="email"
+    />
+  </div>
+
+  <div class="field col-12 md:col-6">
+    <label for="password">Password</label>
+    <input
+      pInputText
+      id="password"
+      placeholder="password"
+      type="password"
+      formControlName="password"
+    />
+    <br />
+
+    <button
+      pButton
+      pRipple
+      label="Login"
+      class="p-button-success"
+      routerLink="/userdetails"
+    ></button>
+
+    <button
+      pButton
+      pRipple
+      label="Reset"
+      severity="warning"
+      (click)="resetUser()"
+    ></button>
+  </div>
+</form> -->

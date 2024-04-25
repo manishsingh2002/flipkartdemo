@@ -12,81 +12,24 @@ const routes: Routes = [
     path: '',
     component: HomepageComponent,
   },
-  // {
-  //   path: 'userdetail',
-  //   component: UserdetailformComponent,
-  //   children: [
-  //     {
-  //       path: 'log',
-  //       component: LoginFormComponent,
-  //     },
-  //   ],
-  // },
   {
     path: 'register',
     component: RegistrationFormComponent,
-
-    children: [
-      {
-        path: 'login',
-        component: LoginFormComponent,
-        children: [{ path: 'userdetail', component: UserdetailformComponent }],
-      },
-    ],
   },
-
   {
     path: 'login',
     component: LoginFormComponent,
   },
   {
-    path: '',
-    component: NavbarComponent,
-  },
-  {
     path: 'checkout',
     component: CheckoutComponent,
-    children: [
-      {
-        path: 'registeruser',
-        component: RegistrationFormComponent,
-        children: [
-          {
-            path: 'loginuser',
-            component: LoginFormComponent,
-            children: [
-              {
-                path: 'userdetail',
-                component: UserdetailformComponent,
-                children: [
-                  {
-                    path: 'delivery',
-                    component: DeliverPageComponent,
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        path: 'userdetails',
-        component: UserdetailformComponent,
-        children: [
-          {
-            path: 'del',
-            component: DeliverPageComponent,
-          },
-        ],
-      },
-    ],
   },
   {
-    path: '',
-    component: NavbarComponent,
+    path: 'userdetails',
+    component: UserdetailformComponent,
   },
   {
-    path: 'delivery',
+    path: 'del',
     component: DeliverPageComponent,
   },
 ];

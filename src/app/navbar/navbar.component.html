@@ -1,4 +1,4 @@
-<nav routerLink="" appTheme>
+<nav appTheme>
   <div class="card flex flex-wrap justify-content-center gap-3">
     <span class="p-input-icon-right">
       <i class="pi pi-spin pi-spinner"></i>
@@ -11,17 +11,7 @@
       />
     </span>
   </div>
-  <!-- <div class="card flex flex-wrap justify-content-center gap-3">
-    <span class="p-input-icon-right">
-      <i class="pi pi-spin pi-spinner"></i>
-      <input
-        type="text"
-        pInputText="search"
-        pllaceholder="Search"
-        [(ngModel)]="searchedvalue"
-      />
-    </span>   
-  </div> -->
+
   <p-multiSelect
     [options]="category"
     [(ngModel)]="selectedCategories"
@@ -69,8 +59,9 @@
     ></p-multiSelect>
   </div>
 
-  <button (click)="reset()">Reset search</button>
-  <button routerLink="register">register</button>
+  <button routerLink="/" (click)="reset()">Reset search</button>
+  <button routerLink="/register">register</button>
+  <button routerLink="/login">Login</button>
 </nav>
 
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
