@@ -72,11 +72,9 @@ export class HomepageComponent implements OnChanges {
     // console.log(this.allImageLinks);
   }
   togglehomepage() {
-    if (this.filteredProducts.length > 0) {
-      this.toggle = false;
-    } else {
-      this.toggle = true;
-    }
+    this.filteredProducts.length > 0
+      ? (this.toggle = false)
+      : (this.toggle = true);
 
     this.checkout = false;
   }
@@ -140,7 +138,6 @@ export class HomepageComponent implements OnChanges {
     // console.log(this.filteredProducts);
   }
 
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   filtering() {
     let filteredResult: any[] = [];
 
@@ -162,7 +159,6 @@ export class HomepageComponent implements OnChanges {
       } else if (this.filteredData.price[0] === 'HighToLow') {
         filteredResult.sort((a, b) => b.price - a.price);
       } else {
-        // filteredResult;
       }
     } else if (this.filteredData.brand.length > 0) {
       filteredResult.push(
@@ -171,7 +167,6 @@ export class HomepageComponent implements OnChanges {
         })
       );
     } else if (this.filteredData.category.length > 0) {
-      // Filter based on category
       filteredResult.push(
         ...this.productdata.filter((product: any) => {
           return this.filteredData.category.includes(product.category);
@@ -192,11 +187,9 @@ export class HomepageComponent implements OnChanges {
     } else {
       filteredResult.push(...this.productdata);
     }
-
     this.filteredProducts = filteredResult;
   }
   cartData: any[] = [];
-
   addTocart(product: any) {
     const existingProduct = this.cartData.find(
       (item) => item.id === product.id
@@ -208,11 +201,9 @@ export class HomepageComponent implements OnChanges {
         final_price: product.price || 0,
       };
       this.cartData.push(updatedProduct);
-      // console.log('Product added to cart:', updatedProduct);
     } else {
       alert('Product already exists in cart:');
     }
     this.dataService.cartDatas(this.cartData);
-    // console.log(typeof this.cartData);
   }
 }

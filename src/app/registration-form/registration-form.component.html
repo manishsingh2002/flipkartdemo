@@ -1,85 +1,5 @@
-<!-- <h1 style="background-color: aqua; font-weight: 800">
-  registration-form works!
-</h1>
-<form [formGroup]="RegistrationForm" (ngSubmit)="registerUser()">
-  <div class="field col-12 md:col-6">
-    <label htmlFor="email">Email</label>
-    <input pInputText type="text" placeholder="email" formControlName="email" />
-  </div>
-
-  <div class="field col-12 md:col-6">
-    <label htmlFor="lastname2">Password</label>
-    <input
-      pInputText
-      placeholder="password"
-      type="text"
-      formControlName="password"
-    />
-    <br />
-    <button
-      routerLink="/login"
-      pButton
-      pRipple
-      label="Register User"
-      class="p-button-success"
-    ></button>
-    <button
-      pButton
-      pRipple
-      label="Reset"
-      severity="warning"
-      (click)="resetUser()"
-    ></button>
-  </div>
-</form>
-<router-outlet></router-outlet> -->
-<!-- <h1 style="background-color: aqua; font-weight: 800">Login Form</h1>
-<button routerLink="/register">Signup</button>
-
-<form [formGroup]="RegistrationForm" (ngSubmit)="registerUser()">
-  <div class="field col-12 md:col-6">
-    <label htmlFor="lastname2">Email</label>
-    <input
-      pInputText
-      id="Email"
-      type="text"
-      placeholder="email"
-      formControlName="email"
-    />
-  </div>
-
-  <div class="field col-12 md:col-6">
-    <label htmlFor="lastname2">Password</label>
-    <input
-      pInputText
-      id="password"
-      placeholder="password"
-      type="text"
-      formControlName="password"
-    />
-    <br />
-
-    <button
-      pButton
-      pRipple
-      label="Login"
-      class="p-button-success"
-      routerLink="/userdetails"
-    ></button>
-
-    <button
-      pButton
-      pRipple
-      label="Reset"
-      severity="warning"
-      (click)="resetUser()"
-    ></button>
-  </div>
-</form> -->
-<!-- <router-outlet></router-outlet> -->
-
 <div class="container">
-  <h1>Register Here</h1>
+  <h1>Register</h1>
   <form [formGroup]="RegistrationForm" (ngSubmit)="registerUser()">
     <div class="email">
       <label for="email">Email:</label>
@@ -113,12 +33,12 @@
         >
       </div>
       <div>
-        <label style="color: rgb(227, 252, 0)" routerLink="/register"
-          >Dont Have Account,Signup</label
+        <label style="color: rgb(227, 252, 0)" routerLink="/login">
+          Have Account,Login</label
         >
       </div>
     </div>
 
-    <button type="submit" routerLink="/userdetails">Login</button>
+    <button type="submit" routerLink="/login">Register Here</button>
   </form>
 </div>

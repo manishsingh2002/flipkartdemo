@@ -1,17 +1,14 @@
 .card {
-  /* Set a fixed width for each card */
-  margin: 1rem; /* Add some margin for spacing */
-
-  display: inline-block; /* Allow cards to sit side-by-side */
+  margin: 1rem;
+  display: inline-flex;
 }
 
 .card img {
-  width: 100%;
+  width: 400px;
   height: 400px;
-  object-fit: cover; /* Or 'contain' depending on your preference */
+  object-fit: cover;
 }
 
-/* Media queries for responsiveness (unchanged) */
 @media (min-width: 768px) {
   .card {
     width: calc(33.33% - 2rem);

@@ -1,62 +1,67 @@
-/* Assuming you have a container wrapping the form */
-.form-container {
-  padding-top: 40px;
-  max-width: 400px; /* Adjust as needed */
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.email .password input {
-  display: inline-flex;
-}
+/* Container styles */
 .container {
   background-image: url("https://images.unsplash.com/photo-1477346611705-65d1883cee1e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  max-width: 600px; /* Adjust as needed */
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.routerpage {
-  display: inline-flex;
-  gap: 290px;
-}
+
+/* Apply Hypetype font to h1 */
 h1 {
+  font-family: "Hypetype", cursive;
+  /* Add other styles as needed (color, size, etc.) */
+}
+
+/* Heading styles */
+.container h1 {
   align-items: center;
   margin-left: 30%;
-
   color: azure;
 }
-/* Label styles */
-label {
-  font-weight: bold;
-  color: rgb(196, 196, 196);
-}
 
-/* Input field styles */
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 90%;
+/* Email input styles */
+.container input[type="email"] {
+  width: 100%;
   padding: 10px;
   margin-bottom: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ffa600;
   border-radius: 4px;
   font-size: 14px;
-  opacity: 0px;
+}
+
+/* Password input styles */
+.container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ffa600;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 /* Error message styles */
-small {
-  color: #d9534f; /* Red color for error messages */
+.container small {
+  color: #d9534f;
   font-size: 12px;
 }
 
-/* Submit button styles */
-button[type="submit"] {
+/* Reset button styles */
+.container label[severity="warning"] {
+  cursor: pointer;
+  color: #d9534f;
+}
+
+/* Login link styles */
+.container label[routerLink="/login"] {
+  color: rgb(227, 252, 0);
+  cursor: pointer;
+}
+
+/* Register button styles */
+.container button[type="submit"] {
   margin-left: 40%;
   background-color: #007bff;
   color: #fff;
@@ -68,6 +73,6 @@ button[type="submit"] {
   transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
+.container button[type="submit"]:hover {
   background-color: #0056b3;
 }

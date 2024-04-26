@@ -26,7 +26,7 @@ import { BodercolorDirective } from './directives/bordercolor/bodercolor.directi
 import { UnlessDirective } from './directives/st-unless/unless.directive';
 import { FormValidationDirective } from './directives/st-formsvalidator/form-validation.directive';
 import { InputTextModule } from 'primeng/inputtext';
-import { DeliverPageComponent } from './Components/deliver-page/deliver-page.component';
+import { DeliverPageComponent } from './deliver-page/deliver-page.component';
 import { LandingpageComponent } from './landingpage/landingpage.component';
 //
 import { CommonModule } from '@angular/common';
